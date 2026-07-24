@@ -140,3 +140,11 @@ I also tested the maximum range with the physical hardware:
 Under the tested indoor conditions and target surface, reliable readings were observed up to approximately 1.3 m. DriveWire should be able to brake in that distance if an object is detected in its path, though more testing will need to be done to confirm. 
 
 A video of this process can be found [here](https://youtube.com/shorts/BkFgAW3W1bs?feature=share).
+
+
+# July 24th
+Completed the firmware for motors.cpp and motors.h, and wrote a couple test files to confirm function of driving both motors, reversing, coasting and braking at different speeds. 
+
+Also wrote a test file that compares breaking to coasting from full speed. The Brake command drives both motor terminals high, effectively shorting the winding and causing the Back EMF to resist any rotation in the wheels. 
+
+I observed the brake command bringing the wheels to a stop much quicker and more aggresively than the coast command from full speed. 

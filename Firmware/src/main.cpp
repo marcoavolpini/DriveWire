@@ -1,0 +1,37 @@
+#include <Arduino.h> 
+
+#include <motors.h>
+#include <sensors.h>
+#include <serial_interface.h>
+#include <drivewire_state.h>
+
+DriveWireState state;
+
+void setup(){
+  Serial.begin(115200);
+  delay(1000);
+
+  Serial.println("DriveWire Motor Firmware Starting...");
+
+  initializeMotors();
+
+  coastMotors(state);
+
+  Serial.println("Motor Module Initialized");
+}
+
+void loop() {
+
+  delay(1000);
+
+  drive(state, 255, 255);
+  delay(1000);
+  brakeMotors(state);
+
+  delay(3000);
+  
+  drive(state, 255, 255);
+  delay(1000);
+  coastMotors(state);
+
+}

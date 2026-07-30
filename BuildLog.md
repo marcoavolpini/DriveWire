@@ -1,6 +1,6 @@
 ## June 12th
 
-All parts came in. Assembled mechanical [chassis](https://github.com/marco-v9/DriveWire/blob/main/Chassis.md). 
+All parts came in. Assembled mechanical [chassis](https://github.com/marcoavolpini/DriveWire/blob/main/Chassis.md).
 
 ## June 13th
 
@@ -27,7 +27,7 @@ I now have a bug where one motor functions perfectly as expected, but the other 
 </p>
 
 # July 1 - July 3
-I learned SolidWorks with the goal of 3D printing a professional demo [support stand](https://github.com/marco-v9/DriveWire/blob/main/Mechanical/Support-Stand.md) for DriveWire. I need the wheels to be suspended off the ground so that I can debug and demo properly. By July 3rd, using reference planes, sketch tools, and the rib feature, along with basic structural analysis, this is the stand that I produced: 
+I learned SolidWorks with the goal of 3D printing a professional demo [support stand](https://github.com/marcoavolpini/DriveWire/blob/main/Mechanical/Support-Stand.md) for DriveWire. I need the wheels to be suspended off the ground so that I can debug and demo properly. By July 3rd, using reference planes, sketch tools, and the rib feature, along with basic structural analysis, this is the stand that I produced:
 
 <p align="center">
   <img src="Images/DriveWireStandFinal.png" width="500">

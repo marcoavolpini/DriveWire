@@ -4,7 +4,7 @@
 DriveWire V1 is a scaled down electric‑vehicle (EV) platform built to explore wireless telemetry, embedded firmware, and mechanical design. The goal is to create a self‑contained test bed that can collect vehicle data and transmit it wirelessly to a ground station for analysis in real time over WiFi. This repository contains both the hardware notes and the firmware for an ESP32‑S3 microcontroller that powers the vehicle’s on‑board electronics.
 
 ### Follow this link to see current status through the build log: 
-[Build Log](https://github.com/marco-v9/DriveWire/blob/main/BuildLog.md)
+[Build Log](https://github.com/marcoavolpini/DriveWire/blob/main/BuildLog.md)
 
 <p align="center">
   <img src="Images/DriveWireStatus06.29.jpg" width="200">

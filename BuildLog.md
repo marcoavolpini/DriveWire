@@ -153,7 +153,11 @@ I observed the brake command bringing the wheels to a stop much quicker and more
 # July 29th: PWM Frequency Testing and Audible Motor Noise Fix
 I investigated an audible beeping noise produced by both motors during low duty PWM operation. The initial hypothesis was that the default PWM carrier frequency was within the audible range, causing periodic current and torque ripple to mechanically excite the motor windings, housing, or gearbox.
 
-The existing motor-control implementation used `analogWrite()`, which implicitly configured the ESP32-S3 LEDC peripheral at approximately 1 kHz with 8 bit duty resolution. I replaced this with explicit LEDC configuration using `ledcSetup()`, `ledcAttachPin()`, and `ledcWrite()`. The 8-bit resolution was preserved so that existing motor commands remained on the same 0–255 duty scale.
+The existing motor-control implementation used analogWrite(), which implicitly configured the ESP32-S3 LEDC peripheral at approximately 1 kHz with 8-bit duty resolution. I replaced this with explicit LEDC configuration using ledcSetup(), ledcAttachPin(), and ledcWrite().
+
+During implementation, I determined that the project uses Arduino-ESP32 core 2.0.17. An earlier attempt had followed the newer Arduino-ESP32 3.x API, which uses functions such as ledcAttach(). That API was incompatible with the installed 2.x framework and caused the previous implementation to fail. Updating the code to use the correct version-specific LEDC functions resolved the configuration issue.
+
+The 8-bit resolution was preserved so that existing motor commands remained on the same 0–255 duty scale.
 
 To test the hypothesis, I held the motor duty command constant and increased the PWM frequency while listening for changes in the motor tone.
 

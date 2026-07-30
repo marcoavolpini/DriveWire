@@ -150,7 +150,7 @@ Also wrote a test file that compares breaking to coasting from full speed. The B
 I observed the brake command bringing the wheels to a stop much quicker and more aggresively than the coast command from full speed. 
 
 
-# July 29th: PWM Frequency Testing and Audible Motor Noise Fix
+# July 29th
 I investigated an audible beeping noise produced by both motors during low duty PWM operation. The initial hypothesis was that the default PWM carrier frequency was within the audible range, causing periodic current and torque ripple to mechanically excite the motor windings, housing, or gearbox.
 
 The existing motor-control implementation used analogWrite(), which implicitly configured the ESP32-S3 LEDC peripheral at approximately 1 kHz with 8-bit duty resolution. I replaced this with explicit LEDC configuration using ledcSetup(), ledcAttachPin(), and ledcWrite().

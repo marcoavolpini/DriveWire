@@ -40,3 +40,36 @@ The next debugging step is to verify the motor direction mapping in firmware and
 | L       | backward      | forward        | forward     | backward     |
 | R       | forward       | backward       | backward    | backward     |
 
+
+
+# July 29th: PWM Frequency Testing and Audible Motor Noise Fix
+I investigated the audible beeping noise produced by both motors during low duty PWM operation. The initial hypothesis was that the default PWM carrier frequency was within the audible range, causing periodic current and torque ripple to mechanically excite the motor windings, housing, or gearbox.
+
+The existing motor-control implementation used analogWrite(), which implicitly configured the ESP32-S3 LEDC peripheral at approximately 1 kHz with 8-bit duty resolution. I replaced this with explicit LEDC configuration using ledcSetup(), ledcAttachPin(), and ledcWrite().
+
+During implementation, I determined that the project uses Arduino-ESP32 core 2.0.17. An earlier attempt had followed the newer Arduino-ESP32 3.x API, which uses functions such as ledcAttach(). That API was incompatible with the installed 2.x framework and caused the previous implementation to fail. Updating the code to use the correct version-specific LEDC functions resolved the configuration issue.
+
+The 8-bit resolution was preserved so that existing motor commands remained on the same 0–255 duty scale.
+
+To test the hypothesis, I held the motor duty command constant and increased the PWM frequency while listening for changes in the motor tone.
+
+| PWM frequency | Observed result                                          |
+| ------------: | -------------------------------------------------------- |
+|         1 kHz | Clearly audible baseline tone                            |
+|         2 kHz | Tone increased to approximately twice the original pitch |
+|         4 kHz | Higher-pitched audible tone                              |
+|         8 kHz | Audible, but significantly higher pitched                |
+|        12 kHz | Faintly audible                                          |
+|        17 kHz | Barely audible                                           |
+|      17.5 kHz | Effectively unnoticeable during testing                  |
+|        18 kHz | Effectively inaudible                                    |
+
+The observed tone consistently increased with PWM frequency, strongly supporting the hypothesis that the noise was caused by PWM-driven electromechanical vibration.
+
+A PWM frequency of **17.5 kHz** was selected as the current operating point because it was effectively inaudible during testing while remaining slightly below 18 kHz to avoid introducing unnecessary switching losses in the motor driver. Both motors were also tested at the maximum 8-bit duty command of `255`, and both operated correctly at the new frequency.
+
+This change resolved the audible motor noise issue and replaced the implicit Arduino PWM configuration with an explicit, configurable motor-control implementation.
+
+### Follow-up testing
+
+Further testing will compare the minimum reliable motor-starting duty at 1 kHz and 17.5 kHz. This will help determine whether the higher switching frequency affects low-speed startup behaviour and whether a minimum-duty mapping or short startup-boost strategy is required.

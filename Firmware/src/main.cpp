@@ -25,13 +25,9 @@ void loop() {
   delay(1000);
 
   drive(state, 255, 255);
-  delay(1000);
-  brakeMotors(state);
+  delay(3000);
+  coastMotors(state);
 
   delay(3000);
-  
-  drive(state, 255, 255);
-  delay(1000);
-  coastMotors(state);
 
 }

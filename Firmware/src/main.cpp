@@ -35,30 +35,13 @@ void loop() {
     Serial.print("System power at rest in mW: ");
     Serial.println(state.powerMw);
 
+  } else{
+    if (!state.ina219Online) { Serial.println("INA219 Offline");}
+    if (!state.tofOnline) { Serial.println("VL53L0X Offline");}
+
+    Serial.println("Failed to update electrical telemetry");
   }
 
-  delay(2000);
-
-  drive(state, 255, 255);
-
-  delay(1000);
-
-  if(refreshElectricalTelemetry(state)) {
-    
-    Serial.print("Battery voltage at full speed in V: ");
-    Serial.println(state.batteryVoltageV);
-
-    Serial.print("Battery current at full speed in mA: ");
-    Serial.println(state.currentMa);
-
-    Serial.print("System power at full speed in mW: ");
-    Serial.println(state.powerMw);
-
-  }
-
-  delay(2000);
-  coastMotors(state);
-
-  delay(5000);
+  delay(4000);
 
 }

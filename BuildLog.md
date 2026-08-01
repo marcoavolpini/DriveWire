@@ -182,3 +182,6 @@ This change resolved the audible motor noise issue and replaced the implicit Ard
 
 Further testing will compare the minimum reliable motor-starting duty at 1 kHz and 17.5 kHz. This will help determine whether the higher switching frequency affects low-speed startup behaviour and whether a minimum-duty mapping or short startup-boost strategy is required.
 
+
+# July 31
+Wrote sensors.h and began sensors.cpp. For DriveWire V1, I have two sensors currently to bring up for telemetry. The INA219 gives me both bus voltage and current readings, and the VL53L0X gives me ToF distance in mm directly outward from the front of the chassis. 

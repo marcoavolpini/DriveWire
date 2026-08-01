@@ -11,23 +11,54 @@ void setup(){
   Serial.begin(115200);
   delay(1000);
 
-  Serial.println("DriveWire Motor Firmware Starting...");
+  Serial.println("DriveWire Motor and Sensor Firmware Starting...");
 
   initializeMotors();
+  initializeSensors(state);
 
-  coastMotors(state);
-
-  Serial.println("Motor Module Initialized");
 }
 
 void loop() {
 
   delay(1000);
 
+  // first sampled reading
+
+  if(refreshElectricalTelemetry(state)) {
+    
+    Serial.print("Battery voltage at rest in V: ");
+    Serial.println(state.batteryVoltageV);
+
+    Serial.print("Battery current at rest in mA: ");
+    Serial.println(state.currentMa);
+
+    Serial.print("System power at rest in mW: ");
+    Serial.println(state.powerMw);
+
+  }
+
+  delay(2000);
+
   drive(state, 255, 255);
-  delay(3000);
+
+  delay(1000);
+
+  if(refreshElectricalTelemetry(state)) {
+    
+    Serial.print("Battery voltage at full speed in V: ");
+    Serial.println(state.batteryVoltageV);
+
+    Serial.print("Battery current at full speed in mA: ");
+    Serial.println(state.currentMa);
+
+    Serial.print("System power at full speed in mW: ");
+    Serial.println(state.powerMw);
+
+  }
+
+  delay(2000);
   coastMotors(state);
 
-  delay(3000);
+  delay(5000);
 
 }

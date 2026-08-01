@@ -197,3 +197,7 @@ Also wrote a test file to test the fault functionality of sensors.cpp for the IN
 <p align="center">
   <img src="Images/Serial INA219 Test for Fault.png" width="600">
 </p>
+
+# August 1
+Updated sensors.cpp `refreshElectricalTelemetry()` so it now immediately returns false after first failed poll, and the test file now shows values previous to sensor failure remain saved: 
+

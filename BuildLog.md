@@ -185,3 +185,9 @@ Further testing will compare the minimum reliable motor-starting duty at 1 kHz a
 
 # July 31
 Wrote `sensors.h` and began `sensors.cpp`. For DriveWire V1, I currently have two sensors for telemetry: The INA219 gives me both bus voltage and current readings, and the VL53L0X gives me ToF distance in mm directly outward from the front of the chassis. 
+
+Today I wrote the firmware to refresh system current, voltage and power data through the INA219 sensor using I2C protocol. I also wrote a simple test file to see its function under normal healthy operation: 
+
+<p align="center">
+  <img src="Images/Serial INA219 Test.png" width="600">
+</p>

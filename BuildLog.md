@@ -191,3 +191,9 @@ Today I wrote the firmware to refresh system current, voltage and power data thr
 <p align="center">
   <img src="Images/Serial INA219 Test.png" width="600">
 </p>
+
+Also wrote a test file to test the fault functionality of sensors.cpp for the INA219 sensor. I let it run one telemetry data refresh, then I unplugged the sensor from its 3v3 power supply. It then reported the fault as expected, first outputting three Wire related errors, then confirming that the INA219 is offline, and that the refresh failed:
+
+<p align="center">
+  <img src="Images/Serial INA219 Test for Fault.png" width="600">
+</p>

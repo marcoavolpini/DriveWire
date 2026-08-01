@@ -61,8 +61,18 @@ bool refreshElectricalTelemetry(DriveWireState& state) {
     busVoltage = ina219.getBusVoltage_V();
     busVoltageSuccess = ina219.success();
 
+    if (!busVoltageSuccess) {
+        state.ina219Online = false;
+        return false;
+    } // report error instead of checking the others
+
     shuntVoltage_mV = ina219.getShuntVoltage_mV();
     shuntVoltageSuccess = ina219.success();
+
+    if (!shuntVoltageSuccess) {
+        state.ina219Online = false;
+        return false;
+    }
 
     // important to test which side the shunt voltage is actually on to know sign in this equation
     batteryVoltage = busVoltage + (shuntVoltage_mV / 1000);
@@ -72,8 +82,13 @@ bool refreshElectricalTelemetry(DriveWireState& state) {
     currentmA = ina219.getCurrent_mA();
     currentSuccess = ina219.success();
 
+    if (!currentSuccess) {
+        state.ina219Online = false;
+        return false;
+    }
 
-    // refresh system power
+
+    // refresh system power, doesnt really need to be in an if statement anymore
 
     if (busVoltageSuccess && shuntVoltageSuccess && currentSuccess) {
         systemPower = batteryVoltage * currentmA;

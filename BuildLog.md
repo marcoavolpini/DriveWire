@@ -211,4 +211,6 @@ I also designed a ToF telemetry  test file.
 
 I tested the ToF telemetry by giving it valid measurements first, then gave it a distance outside its range (confirming it retains the last valid value and outputs a message about an invalid measurement), and then unpluging it to see it update its status to offline. Everything seems good. I did note a difference between the INA219 and teh VL53L0X upon connecting them back to power during these tests. Read more about that in the [debugging](https://github.com/marcoavolpini/DriveWire/blob/main/Debugging.md) file. 
 
-I will also write a file to read one of the INA219 registers using only Wire for I2C, just as a debugging file for my own use. 
+I also wrote a file to read one of the INA219 registers using only Wire for I2C, just as a debugging file for my own use. I appended a similar function to `sensors.cpp`. I will likely remove this and keep both as `.txt` files in my `TestFiles` folder, to avoid mixing use of libraries and lower level handwritten I2C firmware. Outputs of this explicit implementation resulted in the same voltage values as reading through the Adafruit library: 
+
+

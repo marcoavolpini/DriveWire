@@ -213,4 +213,6 @@ I tested the ToF telemetry by giving it valid measurements first, then gave it a
 
 I also wrote a file to read one of the INA219 registers using only Wire for I2C, just as a debugging file for my own use. I appended a similar function to `sensors.cpp`. I will likely remove this and keep both as `.txt` files in my `TestFiles` folder, to avoid mixing use of libraries and lower level handwritten I2C firmware. Outputs of this explicit implementation resulted in the same voltage values as reading through the Adafruit library: 
 
-
+<p align="center">
+  <img src="Images/INA219_using_Wire.png" width="400">
+</p>

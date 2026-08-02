@@ -83,3 +83,5 @@ After writing a test file for my distance telemetry code, I saw that everything 
 I now realize that this is because cutting the power to the breakout board also reset the I2C initialization done in the setup. So the sensor was on again, but not ready to communicate with the system. 
 
 This means nothing is wrong with the firmware, however it does make me think I may want to consider trying `initializeSensors()` periodically if a sensor goes offline. 
+
+I also noticed that the INA219 sensor begins transmitting data as normal when reconnected to power. I believe this is something to do with the Adafruit library for the INA219 writing to the calibration register everytime it tries to send data. Interesting to see the difference between this and the ToF board. 

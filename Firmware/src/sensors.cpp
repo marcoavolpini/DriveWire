@@ -140,3 +140,16 @@ bool refreshDistanceTelemetry(DriveWireState& state) {
     }
 
 }
+
+
+// convenience function - refreshes everything at once
+
+bool refreshAllSensors(DriveWireState& state){ 
+
+    // note that currently one could succeed, and then one telemetry point is updated and one isnt
+    bool electricalState = refreshElectricalTelemetry(state);
+    bool tofState = refreshDistanceTelemetry(state);
+
+    return (electricalState && tofState);
+
+}

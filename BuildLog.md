@@ -204,3 +204,11 @@ Updated sensors.cpp `refreshElectricalTelemetry()` so it now immediately returns
 <p align="center">
   <img src="Images/electricalTelemetryRefreshFullFunctionalityTest.png" width="600">
 </p>
+
+Build the `refreshDistanceTelemetry()` function, as well as the `refreshAllSensors()` function. That is the completed version of sensors.cpp for DriveWire V1, subject to testing of course. In the reasonably near future adding encoders would be very beneficial, in which case this file will be updated. 
+
+I also designed a ToF telemetry  test file. 
+
+I will test the ToF telemetry by giving it valid measurements first, then give it a distance outside its range (confirming it retains the last valid value and outputs a message about an invalid measurement), and then I will unplug it to see if it updates its status to offline. 
+
+I will also write a file to read one of the INA219 registers using only Wire for I2C, just as a debugging file for my own use. 

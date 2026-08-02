@@ -9,3 +9,6 @@ bool refreshElectricalTelemetry(DriveWireState& state);
 bool refreshDistanceTelemetry(DriveWireState& state);
 
 bool refreshAllSensors(DriveWireState& state);
+
+// only for testing
+float getBusVoltage();

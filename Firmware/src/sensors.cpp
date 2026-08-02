@@ -153,3 +153,32 @@ bool refreshAllSensors(DriveWireState& state){
     return (electricalState && tofState);
 
 }
+
+
+// based on my explicit INA219 reading test using only Wire - only for testing
+
+float getBusVoltage() {
+
+    // getting the ESP32 ready to start by sending the INA219 address and a Write bit  
+    Wire.beginTransmission(0x40);
+
+    Wire.write(0x2); // queues the desired register to send to the INA219 (for bus voltage)
+
+    Wire.endTransmission(false); // false tells ESP32 not to send STOP
+    // this sends everything and gets ACK, returns transmission result
+
+    if (Wire.requestFrom(0x40, 2) != 2) { return NAN; }
+    // sends 0x40 again, and a read bit. Wants 2 bytes of data from the register.
+
+    uint8_t MSB = Wire.read();
+    uint8_t LSB = Wire.read();
+
+    uint16_t MSB_shifted = (MSB << 8);  // bitshift MSB by 8 to make room for the LSB
+    uint16_t rawBusVoltage = (MSB_shifted | LSB);
+
+    uint16_t voltageCounts = (rawBusVoltage >> 3); // shave off the status bits
+
+    float busVoltage = (voltageCounts * 0.004); // multiply the voltage count by 4 mV for total
+
+    return busVoltage;  
+}

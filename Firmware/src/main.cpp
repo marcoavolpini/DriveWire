@@ -31,7 +31,7 @@ void loop() {
   Wire.write(0x2); // queues the desired register to send to the INA219 (for bus voltage)
 
   Wire.endTransmission(false); // false tells ESP32 not to send STOP
-  // this sends everything and gets ACK
+  // this sends everything and gets ACK, returns transmission result
 
   if (Wire.requestFrom(0x40, 2) != 2) { return; }
   // sends 0x40 again, and a read bit. Wants 2 bytes of data from the register.

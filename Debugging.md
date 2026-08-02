@@ -79,3 +79,7 @@ Further testing will compare the minimum reliable motor-starting duty at 1 kHz a
 
 # August 1: Distance Telemetry Loop
 After writing a test file for my distance telemetry code, I saw that everything worked as expected for valid measurements, and measurements out of range. After disconnecting the sensor from power, it handled it properly, updating the online status to offline, however after plugging the sensor back in, readins continued as though the sensor was offline. 
+
+I now realize that this is because cutting the power to the breakout board also reset the I2C initialization done in the setup. So the sensor was on again, but not ready to communicate with the system. 
+
+This means nothing is wrong with the firmware, however it does make me think I may want to consider trying `initializeSensors()` periodically if a sensor goes offline. 

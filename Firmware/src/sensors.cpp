@@ -111,3 +111,32 @@ bool refreshElectricalTelemetry(DriveWireState& state) {
     }
 
 }
+
+
+// distance ToF telemetry
+bool refreshDistanceTelemetry(DriveWireState& state) {
+
+    // a type of measurement struct
+    VL53L0X_RangingMeasurementData_t measure;
+    uint16_t distance = 0;
+
+    VL53L0X_Error status = tof.rangingTest(&measure, false);
+
+    if (status != VL53L0X_ERROR_NONE) {
+        state.tofOnline = false;
+        return false;
+    }
+
+    if (measure.RangeStatus == 0) { 
+        distance = measure.RangeMilliMeter;
+        state.distanceMm = distance;
+
+        state.tofOnline = true;
+        return true;
+
+    } else {
+        state.tofOnline = true;
+        return false;
+    }
+
+}

@@ -77,7 +77,7 @@ This change resolved the audible motor noise issue and replaced the implicit Ard
 Further testing will compare the minimum reliable motor-starting duty at 1 kHz and 17.5 kHz. This will help determine whether the higher switching frequency affects low-speed startup behaviour and whether a minimum-duty mapping or short startup-boost strategy is required.
 
 
-# August 1: Distance Telemetry Loop
+# August 1: Distance Telemetry Offline Loop
 After writing a test file for my distance telemetry code, I saw that everything worked as expected for valid measurements, and measurements out of range. After disconnecting the sensor from power, it handled it properly, updating the online status to offline, however after plugging the sensor back in, readins continued as though the sensor was offline. 
 
 I now realize that this is because cutting the power to the breakout board also reset the I2C initialization done in the setup. So the sensor was on again, but not ready to communicate with the system. 

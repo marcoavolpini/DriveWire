@@ -17,7 +17,8 @@ void setup(){
   initializeMotors();
   coastMotors(state);
 
-  initializeSensors(state);
+  if (initializeSensors(state)) {Serial.println("Sensors Initialized...");}
+  else { Serial.println(state.ina219Online); Serial.println(state.tofOnline);}
 
   // actually initializeMotors is a void function so we can't currently check if successful
 

@@ -18,37 +18,25 @@ void setup(){
 
   Serial.println("DriveWire I2C Firmware Starting...");
 
-  Wire.begin(SDA_PIN, SCL_PIN);
+  initializeMotors();
+  coastMotors(state);
+
+  initializeSensors(state);
+
+  // actually initializeMotors is a void function so we can't currently check if successful
+
+  Serial.println("Up and running.");
 }
 
 void loop() {
 
-  delay(1000);
+  static unsigned long lastSensorRefresh = 0;
 
-  // getting the ESP32 ready to start by sending the INA219 address and a Write bit
-  Wire.beginTransmission(0x40);
-
-  Wire.write(0x2); // queues the desired register to send to the INA219 (for bus voltage)
-
-  Wire.endTransmission(false); // false tells ESP32 not to send STOP
-  // this sends everything and gets ACK, returns transmission result
-
-  if (Wire.requestFrom(0x40, 2) != 2) { return; }
-  // sends 0x40 again, and a read bit. Wants 2 bytes of data from the register.
-
-  uint8_t MSB = Wire.read();
-  uint8_t LSB = Wire.read();
-
-  uint16_t MSB_shifted = (MSB << 8);  // bitshift MSB by 8 to make room for the LSB
-  uint16_t rawBusVoltage = (MSB_shifted | LSB);
-
-  uint16_t voltageCounts = (rawBusVoltage >> 3); // shave off the status bits
-
-  float busVoltage = (voltageCounts * 0.004); // multiply the voltage count by 4 mV for total
-
-
-  Serial.println(busVoltage);
-
-  delay(2000);
+  if ((millis() - lastSensorRefresh) > 1500) {
+    refreshAllSensors(state);
+    
+    lastSensorRefresh = millis();
+  }
+  
 
 }

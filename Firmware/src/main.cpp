@@ -36,6 +36,20 @@ void loop() {
     refreshAllSensors(state);
     
     lastSensorRefresh = millis();
+
+    Serial.print("Battery voltage: ");
+    Serial.print(state.batteryVoltageV);
+    Serial.println(" V");
+
+    Serial.print("Battery current: ");
+    Serial.print(state.currentMa);
+    Serial.println(" mA");
+
+    Serial.print("Distance in front: ");
+    Serial.print(state.distanceMm);
+    Serial.println(" mm");
+
+
   }
   
 

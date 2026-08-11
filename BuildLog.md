@@ -216,3 +216,7 @@ I also wrote a file to read one of the INA219 registers using only Wire for I2C,
 <p align="center">
   <img src="Images/INA219_using_Wire.png" width="400">
 </p>
+
+
+# August 10
+Updated main.cpp to prepare for operation over serial, and FreeRTOS implementation. Also added [Hardware](https://github.com/marcoavolpini/DriveWire/tree/main/Hardware) folder containing early existing Altium PCB files, as well as a mechanical CAD folder containing the existing [Support Stand CAD](https://github.com/marcoavolpini/DriveWire/tree/main/Mechanical/CAD/Support%20Stand). 

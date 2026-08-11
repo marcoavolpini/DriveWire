@@ -7,8 +7,6 @@
 
 DriveWireState state;
 
-constexpr int SDA_PIN = 7;
-constexpr int SCL_PIN = 15;
 
 void setup(){
   Serial.begin(115200);

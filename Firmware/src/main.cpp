@@ -5,8 +5,6 @@
 #include <serial_interface.h>
 #include <drivewire_state.h>
 
-#include <Wire.h>
-
 DriveWireState state;
 
 constexpr int SDA_PIN = 7;

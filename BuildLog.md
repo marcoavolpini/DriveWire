@@ -220,3 +220,7 @@ I also wrote a file to read one of the INA219 registers using only Wire for I2C,
 
 # August 10
 Updated main.cpp to prepare for operation over serial, and FreeRTOS implementation. Also added [Hardware](https://github.com/marcoavolpini/DriveWire/tree/main/Hardware) folder containing early existing Altium PCB files, as well as a mechanical CAD folder containing the existing [Support Stand CAD](https://github.com/marcoavolpini/DriveWire/tree/main/Mechanical/CAD/Support%20Stand). 
+
+
+# August 13
+Implemented the first RTOS task in DriveWire using FreeRTOS. A dedicated Sensor Task now refreshes the INA219 and VL53L0X every 1.5 seconds using `xTaskDelayUntil()`, then publishes the latest `DriveWireState` snapshot through a single item FreeRTOS queue. The Arduino `loop()` receives and prints an independent copy, preventing it from reading the shared state while sensor data is being updated (avoids data race). The firmware builds successfully and was verified with live sensor telemetry.

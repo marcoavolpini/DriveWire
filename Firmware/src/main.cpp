@@ -5,7 +5,19 @@
 #include <serial_interface.h>
 #include <drivewire_state.h>
 
+// including FreeRTOS libraries
+#include <FreeRTOS.h>
+#include <task.h>
+#include <queue.h>
+
 DriveWireState state;
+
+// initializing a queue handle for the sensor task that holds a snapshot of sensor telemetry
+// it is a pointer to a queue?
+QueueHandle_t sensorQueue = nullptr;
+
+// declaring sensorTask
+void sensorTask(void* parameter);
 
 
 void setup(){
@@ -20,9 +32,34 @@ void setup(){
   if (initializeSensors(state)) {Serial.println("Sensors Initialized...");}
   else { Serial.println(state.ina219Online); Serial.println(state.tofOnline);}
 
+
+
+  // gonna create the queue and assign it to the handle initialized globally
+  sensorQueue = xQueueCreate(1, sizeof(DriveWireState));
+
+  if (sensorQueue == nullptr) {
+    Serial.println("Failed to create sensor queue");
+  }
+
+  // creating the sensor task
+  BaseType_t taskResult = xTaskCreate(
+    sensorTask, 
+    "sensorTask", 
+    4096, 
+    &state, 
+    1, 
+    nullptr
+  );
+
+  // checking for successful sensor task creation
+  if (taskResult != pdPASS) {
+    Serial.println("Failed to create sensor task.");
+  }
+
+
   // actually initializeMotors is a void function so we can't currently check if successful
 
-  Serial.println("Up and running.");
+  Serial.println("Program starting...");
 }
 
 void loop() {
@@ -49,5 +86,19 @@ void loop() {
 
   }
   
+
+}
+
+void sensorTask(void* parameter) {
+
+  DriveWireState* sensorState = static_cast<DriveWireState*>(parameter);
+
+  for ( ; ; ) {
+    refreshAllSensors(*sensorState);
+
+    //we have to pass a void* back into this FreeRTOS function, but it contains my sensorState data
+    xQueueOverwrite(sensorQueue, parameter);
+  }
+
 
 }

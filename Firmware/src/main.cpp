@@ -59,6 +59,11 @@ void setup(){
   // checking for successful sensor task creation
   if (taskResult != pdPASS) {
     Serial.println("Failed to create sensor task.");
+
+    Serial.println("The program will not run");
+    for ( ; ; ) {
+      vTaskDelay(pdMS_TO_TICKS(1000));
+    }
   }
 
 

@@ -98,6 +98,14 @@ void sensorTask(void* parameter) {
 
     //we have to pass a void* back into this FreeRTOS function, but it contains my sensorState data
     xQueueOverwrite(sensorQueue, parameter);
+
+    // making a TickType_t period
+    TickType_t sensorPeriod = 1500;
+
+    TickType_t lastWakeTime = xTaskGetTickCount();
+
+    //set the task period
+    xTaskDelayUntil(&lastWakeTime, sensorPeriod);
   }
 
 

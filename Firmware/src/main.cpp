@@ -64,28 +64,21 @@ void setup(){
 
 void loop() {
 
-  static unsigned long lastSensorRefresh = 0;
+  DriveWireState receivedState;
 
-  if ((millis() - lastSensorRefresh) > 1500) {
-    refreshAllSensors(state);
-    
-    lastSensorRefresh = millis();
-
+  if (xQueueReceive(sensorQueue, &receivedState, 0) == pdTRUE) {
     Serial.print("Battery voltage: ");
-    Serial.print(state.batteryVoltageV);
-    Serial.println(" V");
+    Serial.print(receivedState.batteryVoltageV);
+    Serial.println(" V");  
 
     Serial.print("Battery current: ");
-    Serial.print(state.currentMa);
+    Serial.print(receivedState.currentMa);
     Serial.println(" mA");
 
     Serial.print("Distance in front: ");
-    Serial.print(state.distanceMm);
-    Serial.println(" mm");
-
-
+    Serial.print(receivedState.distanceMm);
+    Serial.println(" mm");    
   }
-  
 
 }
 
@@ -100,11 +93,10 @@ void sensorTask(void* parameter) {
   TickType_t lastWakeTime = xTaskGetTickCount();
 
   for ( ; ; ) {
+
     refreshAllSensors(*sensorState);
 
     xQueueOverwrite(sensorQueue, sensorState);
-
-
 
     //set the task period
     xTaskDelayUntil(&lastWakeTime, sensorPeriod);

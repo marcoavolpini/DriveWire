@@ -92,17 +92,19 @@ void loop() {
 void sensorTask(void* parameter) {
 
   DriveWireState* sensorState = static_cast<DriveWireState*>(parameter);
+    
+  // making a TickType_t period
+  // added pdMS_TO_TICKS to be sure 1.5s period
+  TickType_t sensorPeriod = pdMS_TO_TICKS(1500);
+
+  TickType_t lastWakeTime = xTaskGetTickCount();
 
   for ( ; ; ) {
     refreshAllSensors(*sensorState);
 
-    //we have to pass a void* back into this FreeRTOS function, but it contains my sensorState data
-    xQueueOverwrite(sensorQueue, parameter);
+    xQueueOverwrite(sensorQueue, sensorState);
 
-    // making a TickType_t period
-    TickType_t sensorPeriod = 1500;
 
-    TickType_t lastWakeTime = xTaskGetTickCount();
 
     //set the task period
     xTaskDelayUntil(&lastWakeTime, sensorPeriod);

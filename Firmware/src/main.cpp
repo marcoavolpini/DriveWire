@@ -42,7 +42,7 @@ void setup(){
 
     Serial.println("The program will not run");
     for ( ; ; ) {
-      
+
     }
   }
 
@@ -93,7 +93,7 @@ void sensorTask(void* parameter) {
     
   // making a TickType_t period
   // added pdMS_TO_TICKS to be sure 1.5s period
-  TickType_t sensorPeriod = pdMS_TO_TICKS(1500);
+  const TickType_t sensorPeriod = pdMS_TO_TICKS(1500);
 
   TickType_t lastWakeTime = xTaskGetTickCount();
 

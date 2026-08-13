@@ -39,6 +39,11 @@ void setup(){
 
   if (sensorQueue == nullptr) {
     Serial.println("Failed to create sensor queue");
+
+    Serial.println("The program will not run");
+    for ( ; ; ) {
+      
+    }
   }
 
   // creating the sensor task

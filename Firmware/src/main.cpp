@@ -42,7 +42,7 @@ void setup(){
 
     Serial.println("The program will not run");
     for ( ; ; ) {
-
+      vTaskDelay(pdMS_TO_TICKS(1000));
     }
   }
 

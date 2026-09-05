@@ -11,3 +11,4 @@
 | Adafruit ToF sensor | Distance sensing | Soldered, in use |
 | 22 AWG automotive wire | Motor and power wiring | In use |
 | Heat shrink tubing | Joint insulation/strain relief | In use |
+| LiPo 2S Battery Pack | Power source | In progress |

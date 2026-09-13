@@ -228,7 +228,7 @@ Implemented the first RTOS task in DriveWire using FreeRTOS. A dedicated Sensor 
 # September 12
 Added the INA219BIDR chip and surrounding circuitry with a tentative 20 mOhm shunt value and 20K I2C pullups (ToF already has SDA and SCL pullups). 
 
-Created the main VBAT_BUS that is fused, switched and protected from reverse polarity. This will feed into a 3V3 buck converter to power sensors and the ESP32 WROOM module. It will also feed a power mux IC both directly and through a 6V buck converter for motor power and a hardware boost mode (rather than PWM control which is not as perfect of a solution. 
+Created the main VBAT_BUS that is fused, switched and protected from reverse polarity. This will feed into a 3V3 buck converter to power sensors and the ESP32 WROOM module. It also feeds a TPS2121 power mux IC both directly and through a 6V buck converter for motor power and a hardware boost mode (rather than PWM control which is not as perfect of a solution. 
 
 <p align="center">
   <img src="Images/Sept12PowerSch.png" width="400">

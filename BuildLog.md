@@ -234,7 +234,7 @@ Created the main VBAT_BUS that is fused, switched and protected from reverse pol
   <img src="Images/INA219_using_Wire.png" width="400">
 </p>
 
-Also tested the system stall current using the new 2S LiPo pack charged to around 7.8 V unloaded (value from testing with my DMM). 
+Also tested the system stall current using the new 2S LiPo pack charged to around 7.8 V unloaded (value from testing with my DMM). Can view a YouTube video of the test [here](https://youtu.be/42B50RET46Q?si=w4cIeANYq-4YvmkY). 
 
 The terminal output was as such: 
 `DriveWire I2C Firmware Starting... 

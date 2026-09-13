@@ -89,7 +89,11 @@ void loop() {
     Serial.print(receivedState.distanceMm);
     Serial.println(" mm");    
   }
+  delay(5000);
+  drive(state, 255, 255);
 
+  delay(6000);
+  coastMotors(state);
 }
 
 void sensorTask(void* parameter) {

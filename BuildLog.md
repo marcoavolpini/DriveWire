@@ -224,3 +224,41 @@ Updated main.cpp to prepare for operation over serial, and FreeRTOS implementati
 
 # August 13
 Implemented the first RTOS task in DriveWire using FreeRTOS. A dedicated Sensor Task now refreshes the INA219 and VL53L0X every 1.5 seconds using `xTaskDelayUntil()`, then publishes the latest `DriveWireState` snapshot through a single item FreeRTOS queue. The Arduino `loop()` receives and prints an independent copy, preventing it from reading the shared state while sensor data is being updated (avoids data race). The firmware builds successfully and was verified with live sensor telemetry.
+
+# September 12
+Added the INA219BIDR chip and surrounding circuitry with a tentative 20 mOhm shunt value and 20K I2C pullups (ToF already has SDA and SCL pullups). 
+
+Created the main VBAT_BUS that is fused, switched and protected from reverse polarity. This will feed into a 3V3 buck converter to power sensors and the ESP32 WROOM module. It will also feed a power mux IC both directly and through a 6V buck converter for motor power and a hardware boost mode (rather than PWM control which is not as perfect of a solution. 
+
+<p align="center">
+  <img src="Images/INA219_using_Wire.png" width="400">
+</p>
+
+Also tested the system stall current using the new 2S LiPo pack charged to around 7.8 V unloaded (value from testing with my DMM). 
+
+The terminal output was as such: 
+`DriveWire I2C Firmware Starting... 
+Sensors Initialized... 
+Program starting... 
+Battery voltage: 0.89 V 
+Battery current: -0.30 mA 
+Distance in front: 315 mm 
+Battery voltage: 7.50 V 
+Battery current: 324.90 mA 
+Distance in front: 139 mm 
+Battery voltage: 7.51 V 
+Battery current: 264.70 mA 
+Distance in front: 319 mm 
+Battery voltage: 7.50 V 
+Battery current: 293.40 mA 
+Distance in front: 233 mm 
+Battery voltage: 6.39 V 
+Battery current: 1341.40 mA 
+Distance in front: 218 mm 
+Battery voltage: 7.56 V 
+Battery current: 272.20 mA 
+Distance in front: 249 mm 
+Battery voltage: 6.39 V 
+Battery current: 1330.80 mA`
+
+Only two stall currents were captured, with both readings being very similarly between 1.3 and 1.4 amps. This is helpful for PCB component selection when knowing what current ratings have acceptable overhead. 

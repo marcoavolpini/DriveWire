@@ -85,3 +85,27 @@ I now realize that this is because cutting the power to the breakout board also 
 This means nothing is wrong with the firmware, however it does make me think I may want to consider trying `initializeSensors()` periodically if a sensor goes offline. 
 
 I also noticed that the INA219 sensor begins transmitting data as normal when reconnected to power. I believe this is something to do with the Adafruit library for the INA219 writing to the calibration register everytime it tries to send data. Interesting to see the difference between this and the ToF board. 
+
+
+# September 14
+I tested stall current with the new 2S LiPo battery by having the motors on full power, and stopping them from spinning. I'd then read telemetry values of battery current and voltage from the onboard INA219 sensor. These are some of the values I got: 
+
+`Battery voltage: 7.50 V` 
+`Battery current: 324.90 mA`
+`Distance in front: 139 mm` 
+`Battery voltage: 7.51 V` 
+`Battery current: 264.70 mA` 
+`Distance in front: 319 mm` 
+`Battery voltage: 7.50 V`
+`Battery current: 293.40 mA` 
+`Distance in front: 233 mm` 
+`Battery voltage: 6.39 V` 
+`Battery current: 1341.40 mA` 
+`Distance in front: 218 mm` 
+`Battery voltage: 7.56 V` 
+`Battery current: 272.20 mA` 
+`Distance in front: 249 mm` 
+`Battery voltage: 6.39 V` 
+`Battery current: 1330.80 mA`
+
+I noticed that the battery voltage readings were dropping by around 1.2 V during stall current, which would be a concerning amount of battery sag. To see if this was the battery, or simply internal resistances in the prototype circuit, I conducted the stall current test again, this time also measuring the power rails with a DMM to see if the ~1.2 V voltage drop seen by the INA219 was due to prototype imperfections and resistances, or if the battery was sagging a concerning amount. The power rails (connected directly to battery terminals), went from 7.78 V normal operation to 7.34 V during stall current. So the 6.39 V readings I have been seeing during these tests are due to losses in the circuitry rather than an issue with the battery. This inefficiency is expected to be entirely resolved by the PCB. 

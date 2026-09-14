@@ -264,3 +264,6 @@ Battery current: 1330.80 mA`
 Only two stall currents were captured, with both readings being very similarly between 1.3 and 1.4 amps. This is helpful for PCB component selection when knowing what current ratings have acceptable overhead. 
 
 Something I need to confirm in the future is why the battery sagged by ~1.2 V. It could very possibly be due to my prototype setup with jumpers and a breadboard, but I can confirm with my DMM measuring the power bus during a stall to see voltage. 
+
+# September 14
+I retested the stall current with the LiPo pack, and got similar values. This time, I also measured the power rails with a DMM to see if the ~1.2 V voltage drop seen by the INA219 was due to prototype imperfections and resistances, or if the battery was sagging a concerning amount. The power rails (connected directly to battery terminals), went from 7.78 V normal operation to 7.34 V during stall current. So the 6.39 V readings I have been seeing during these tests are due to losses in the circuitry rather than an issue with the battery. This inefficiency is expected to be entirely resolved by the PCB. 

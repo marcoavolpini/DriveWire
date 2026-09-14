@@ -102,7 +102,7 @@ void sensorTask(void* parameter) {
     
   // making a TickType_t period
   // added pdMS_TO_TICKS to be sure 1.5s period
-  const TickType_t sensorPeriod = pdMS_TO_TICKS(1500);
+  const TickType_t sensorPeriod = pdMS_TO_TICKS(500);
 
   TickType_t lastWakeTime = xTaskGetTickCount();
 

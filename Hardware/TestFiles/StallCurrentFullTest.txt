@@ -1,0 +1,443 @@
+DriveWire I2C Firmware Starting...
+Sensors Initialized...
+Program starting...
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 90 mm
+Battery voltage: 7.79 V
+Battery current: 3.60 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.10 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.50 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.50 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 84 mm
+Battery voltage: 7.79 V
+Battery current: 3.50 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.20 mA
+Distance in front: 85 mm
+Battery voltage: 7.79 V
+Battery current: 3.10 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 89 mm
+Battery voltage: 7.79 V
+Battery current: 3.70 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 85 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 90 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.50 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 85 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.60 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.10 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.50 mA
+Distance in front: 88 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 90 mm
+Battery voltage: 7.79 V
+Battery current: 3.10 mA
+Distance in front: 85 mm
+Battery voltage: 7.79 V
+Battery current: 3.50 mA
+Distance in front: 87 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 85 mm
+Battery voltage: 7.79 V
+Battery current: 3.40 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.10 mA
+Distance in front: 86 mm
+Battery voltage: 7.79 V
+Battery current: 3.30 mA
+Distance in front: 86 mm
+Battery voltage: 7.34 V
+Battery current: 435.30 mA
+Distance in front: 86 mm
+Battery voltage: 7.50 V
+Battery current: 322.80 mA
+Distance in front: 88 mm
+Battery voltage: 7.50 V
+Battery current: 254.40 mA
+Distance in front: 85 mm
+Battery voltage: 7.51 V
+Battery current: 267.40 mA
+Distance in front: 85 mm
+Battery voltage: 7.47 V
+Battery current: 285.60 mA
+Distance in front: 90 mm
+Battery voltage: 7.50 V
+Battery current: 247.10 mA
+Distance in front: 87 mm
+Battery voltage: 7.52 V
+Battery current: 260.20 mA
+Distance in front: 87 mm
+Battery voltage: 7.53 V
+Battery current: 277.50 mA
+Distance in front: 88 mm
+Battery voltage: 7.50 V
+Battery current: 325.20 mA
+Distance in front: 89 mm
+Battery voltage: 7.51 V
+Battery current: 262.10 mA
+Distance in front: 87 mm
+Battery voltage: 7.58 V
+Battery current: 262.00 mA
+Distance in front: 88 mm
+Battery voltage: 6.79 V
+Battery current: 965.50 mA
+Distance in front: 87 mm
+Battery voltage: 6.28 V
+Battery current: 1343.40 mA
+Distance in front: 80 mm
+Battery voltage: 6.27 V
+Battery current: 1343.10 mA
+Distance in front: 87 mm
+Battery voltage: 6.29 V
+Battery current: 1345.60 mA
+Distance in front: 77 mm
+Battery voltage: 6.28 V
+Battery current: 1346.10 mA
+Distance in front: 77 mm
+Battery voltage: 6.28 V
+Battery current: 1350.20 mA
+Distance in front: 84 mm
+Battery voltage: 6.28 V
+Battery current: 1351.10 mA
+Distance in front: 79 mm
+Battery voltage: 6.28 V
+Battery current: 1351.80 mA
+Distance in front: 80 mm
+Battery voltage: 6.28 V
+Battery current: 1351.90 mA
+Distance in front: 80 mm
+Battery voltage: 6.27 V
+Battery current: 1352.40 mA
+Distance in front: 82 mm
+Battery voltage: 6.28 V
+Battery current: 1350.40 mA
+Distance in front: 82 mm
+Battery voltage: 6.27 V
+Battery current: 1349.50 mA
+Distance in front: 81 mm
+Battery voltage: 6.28 V
+Battery current: 1349.40 mA
+Distance in front: 81 mm
+Battery voltage: 6.28 V
+Battery current: 1347.40 mA
+Distance in front: 82 mm
+Battery voltage: 6.28 V
+Battery current: 1346.40 mA
+Distance in front: 79 mm
+Battery voltage: 6.28 V
+Battery current: 1345.40 mA
+Distance in front: 82 mm
+Battery voltage: 6.28 V
+Battery current: 1344.50 mA
+Distance in front: 78 mm
+Battery voltage: 6.28 V
+Battery current: 1343.60 mA
+Distance in front: 83 mm
+Battery voltage: 6.28 V
+Battery current: 1341.70 mA
+Distance in front: 82 mm
+Battery voltage: 6.28 V
+Battery current: 1340.90 mA
+Distance in front: 80 mm
+Battery voltage: 6.28 V
+Battery current: 1340.10 mA
+Distance in front: 81 mm
+Battery voltage: 6.28 V
+Battery current: 1339.10 mA
+Distance in front: 85 mm
+Battery voltage: 6.28 V
+Battery current: 1338.20 mA
+Distance in front: 77 mm
+Battery voltage: 6.28 V
+Battery current: 1337.50 mA
+Distance in front: 79 mm
+Battery voltage: 6.28 V
+Battery current: 1336.10 mA
+Distance in front: 79 mm
+Battery voltage: 6.28 V
+Battery current: 1334.00 mA
+Distance in front: 81 mm
+Battery voltage: 6.28 V
+Battery current: 1333.50 mA
+Distance in front: 81 mm
+Battery voltage: 6.28 V
+Battery current: 1333.10 mA
+Distance in front: 79 mm
+Battery voltage: 6.27 V
+Battery current: 1331.90 mA
+Distance in front: 80 mm
+Battery voltage: 6.28 V
+Battery current: 1330.90 mA
+Distance in front: 79 mm
+Battery voltage: 6.74 V
+Battery current: 915.10 mA
+Distance in front: 82 mm
+Battery voltage: 7.40 V
+Battery current: 321.80 mA
+Distance in front: 84 mm
+Battery voltage: 7.52 V
+Battery current: 223.90 mA
+Distance in front: 81 mm
+Battery voltage: 7.50 V
+Battery current: 269.10 mA
+Distance in front: 85 mm
+Battery voltage: 7.51 V
+Battery current: 271.20 mA
+Distance in front: 81 mm
+Battery voltage: 7.43 V
+Battery current: 292.20 mA
+Distance in front: 87 mm
+Battery voltage: 7.50 V
+Battery current: 214.20 mA
+Distance in front: 87 mm
+Battery voltage: 7.47 V
+Battery current: 241.20 mA
+Distance in front: 82 mm
+Battery voltage: 7.48 V
+Battery current: 248.60 mA
+Distance in front: 85 mm
+Battery voltage: 7.51 V
+Battery current: 226.90 mA
+Distance in front: 82 mm
+Battery voltage: 7.45 V
+Battery current: 267.60 mA
+Distance in front: 84 mm
+Battery voltage: 7.52 V
+Battery current: 260.70 mA
+Distance in front: 82 mm
+Battery voltage: 7.47 V
+Battery current: 252.00 mA
+Distance in front: 80 mm
+Battery voltage: 7.47 V
+Battery current: 248.30 mA
+Distance in front: 80 mm
+Battery voltage: 7.53 V
+Battery current: 255.60 mA
+Distance in front: 83 mm
+Battery voltage: 7.47 V
+Battery current: 216.00 mA
+Distance in front: 83 mm
+Battery voltage: 7.53 V
+Battery current: 212.10 mA
+Distance in front: 86 mm
+Battery voltage: 7.57 V
+Battery current: 226.80 mA
+Distance in front: 87 mm
+Battery voltage: 7.49 V
+Battery current: 271.80 mA
+Distance in front: 82 mm
+Battery voltage: 7.77 V
+Battery current: 3.50 mA
+Distance in front: 85 mm
+Battery voltage: 7.77 V
+Battery current: 3.40 mA
+Distance in front: 88 mm
+Battery voltage: 7.78 V
+Battery current: 3.50 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 86 mm
+Battery voltage: 7.77 V
+Battery current: 3.20 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.10 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.50 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 85 mm
+Battery voltage: 7.77 V
+Battery current: 3.40 mA
+Distance in front: 81 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.10 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.10 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.10 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 87 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 82 mm
+Battery voltage: 7.78 V
+Battery current: 3.50 mA
+Distance in front: 87 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.50 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 88 mm
+Battery voltage: 7.78 V
+Battery current: 3.60 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.10 mA
+Distance in front: 82 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.50 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 85 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 87 mm
+Battery voltage: 7.78 V
+Battery current: 3.30 mA
+Distance in front: 83 mm
+Battery voltage: 7.78 V
+Battery current: 3.10 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.00 mA
+Distance in front: 84 mm
+Battery voltage: 7.78 V
+Battery current: 3.20 mA
+Distance in front: 86 mm
+Battery voltage: 7.78 V
+Battery current: 3.40 mA

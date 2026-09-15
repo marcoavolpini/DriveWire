@@ -269,3 +269,9 @@ Something I need to confirm in the future is why the battery sagged by ~1.2 V. I
 I retested the stall current with the LiPo pack, and got similar values. This time, I also measured the power rails with a DMM to see if the ~1.2 V voltage drop seen by the INA219 was due to prototype imperfections and resistances, or if the battery was sagging a concerning amount. The power rails (connected directly to battery terminals), went from 7.78 V normal operation to 7.34 V during stall current. So the 6.39 V readings I have been seeing during these tests are due to losses in the circuitry rather than an issue with the battery. This inefficiency is expected to be entirely resolved by the PCB. 
 
 *Todo: consider OV2 battery voltage interlock system with mosfet and microcontroller control*
+
+I decreased the INA219 telemetry period to 0.1s and updated the test in main.cpp to get a stall current plot. Plotted it in MATLAB (relevant files found in Hardware > TestFiles): 
+
+<p align="center">
+  <img src="Images/StallCurrentPlot.png" width="600">
+</p>

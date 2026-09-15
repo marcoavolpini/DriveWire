@@ -89,11 +89,30 @@ void loop() {
     Serial.print(receivedState.distanceMm);
     Serial.println(" mm");    
   }
-  delay(5000);
-  drive(state, 255, 255);
+  
 
-  delay(6000);
-  coastMotors(state);
+  // better motor test
+
+  static unsigned long lastMotorChange = 0;
+  static bool motorsDriving = false;
+
+  unsigned long currentTime = millis();
+
+  if (!motorsDriving && currentTime-lastMotorChange >= 5000) {
+
+    drive(state, 255, 255);
+
+    motorsDriving = true;
+    lastMotorChange = currentTime;
+  } 
+  else if (motorsDriving && currentTime - lastMotorChange >= 6000) {
+
+    coastMotors(state);
+
+    motorsDriving = false;
+    lastMotorChange = currentTime;
+
+  }
 }
 
 void sensorTask(void* parameter) {
@@ -101,8 +120,8 @@ void sensorTask(void* parameter) {
   DriveWireState* sensorState = static_cast<DriveWireState*>(parameter);
     
   // making a TickType_t period
-  // added pdMS_TO_TICKS to be sure 1.5s period
-  const TickType_t sensorPeriod = pdMS_TO_TICKS(500);
+  // added pdMS_TO_TICKS to be sure 0.1s period
+  const TickType_t sensorPeriod = pdMS_TO_TICKS(100);
 
   TickType_t lastWakeTime = xTaskGetTickCount();
 

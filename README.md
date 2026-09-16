@@ -2,9 +2,9 @@
 
 ### A hardware-tested ESP32-S3 rover for embedded control, vehicle telemetry, and power-electronics development
 
-DriveWire is a miniature electric-vehicle test platform built to take an embedded system from breadboard bring-up toward a custom PCB. The current prototype drives two brushed DC motors, measures electrical and distance telemetry, and runs sensor acquisition in a periodic FreeRTOS task. Development is now focused on replacing the lossy prototype power path with a protected 2S LiPo power architecture designed in Altium.
+DriveWire is a scaled-down electric vehicle test platform built to take an embedded system from breadboard bring-up to a custom PCB running FreeRTOS software. The current prototype drives two brushed DC motors, measures electrical and distance telemetry, and runs sensor acquisition in a periodic FreeRTOS task. Development is now focused on replacing the lossy prototype power path with a protected 2S LiPo power architecture that has been fully designed in Altium.
 
-> **Status — September 2026:** the breadboard prototype and core firmware have been exercised on hardware. The custom power schematic is in progress and has not yet been laid out, fabricated, or validated. Telemetry currently runs over serial; Wi-Fi control and a browser dashboard remain planned work.
+> **Status — September 2026:** the breadboard prototype and core firmware have been exercised on hardware. The custom power schematic is completed and needs to be laid out, fabricated, and validated. Telemetry currently runs over serial; Wi-Fi control and a browser dashboard are planned.
 
 <p align="center">
   <img src="Images/DriveWireStatus06.29.jpg" width="650" alt="DriveWire ESP32-S3 rover prototype">
@@ -84,7 +84,7 @@ The upload and monitor ports in [`Firmware/platformio.ini`](Firmware/platformio.
 
 ## Project scope
 
-DriveWire is an active engineering prototype, not a finished vehicle. The near-term milestones are to finish and review the power schematic, complete PCB layout, validate the protection and regulator stages, then integrate wireless control and closed-loop motion sensing. The distinction between bench-verified behavior and planned capability is maintained throughout this README and the build log.
+DriveWire is an active engineering project. The short-term milestones are to validate the power schematic, complete PCB layout, validate the protection and regulator stages, then integrate wireless control and closed-loop motion sensing. The distinction between bench-verified behavior and planned capability is maintained throughout this README and the build log.
 
 ---
 

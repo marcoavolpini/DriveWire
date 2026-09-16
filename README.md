@@ -4,7 +4,7 @@
 
 DriveWire is a scaled-down electric vehicle test platform built to take an embedded system from breadboard bring-up to a custom PCB running FreeRTOS software. The current prototype drives two brushed DC motors, measures electrical and distance telemetry, and runs sensor acquisition in a periodic FreeRTOS task. Development is now focused on replacing the lossy prototype power path with a protected 2S LiPo power architecture that has been fully designed in Altium.
 
-> **Status: September 2026:** the breadboard prototype and core firmware have been exercised on hardware. The custom power schematic is completed and needs to be laid out, fabricated, and validated. Telemetry currently runs over serial; Wi-Fi control and a browser dashboard are planned.
+> **Status - September 2026:** the breadboard prototype and core firmware have been exercised on hardware. The custom power schematic is completed and needs to be laid out, fabricated, and validated. Telemetry currently runs over serial; Wi-Fi control and a browser dashboard are planned.
 
 <p align="center">
   <img src="Images/DriveWireStatus06.29.jpg" width="650" alt="DriveWire ESP32-S3 rover prototype">

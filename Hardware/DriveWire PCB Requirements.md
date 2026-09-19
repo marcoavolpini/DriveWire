@@ -10,5 +10,5 @@
 
 
 
-Currently exploring the DCP0606QTRY for its broad range of rated outputs and inputs, and at a good price. 
+
 

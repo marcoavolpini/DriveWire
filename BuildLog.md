@@ -276,11 +276,12 @@ I decreased the INA219 telemetry period to 0.1s and updated the test in main.cpp
   <img src="Images/StallCurrentPlot.png" width="600">
 </p>
 
-# September 22
-Designing 6V buck converter circuit. Chose TPS62130ARGTR. 
-
 I also completed the Power schematic with some tentative values upon further testing: 
 
 <p align="center">
   <img src="Images/TentativePowerSchematic.png" width="600">
 </p>
+
+
+# September 22
+Designing 6V buck converter circuit. Chose TPS62130ARGTR. 

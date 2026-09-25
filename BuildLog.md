@@ -285,3 +285,11 @@ I also completed the Power schematic with some tentative values upon further tes
 
 # September 22
 Designing 6V buck converter circuit. Chose TPS62130ARGTR. 
+
+# September 24
+Almost finished 6V buck converter schematic. Made soft start capacitor decision, designed voltage divider with 130k and 20k ohm resistors for enough current for stability, without wasting too much energy or degrading thermal performance. All pins complete other than SW: 
+
+<p align="center">
+  <img src="Images/Images/6V_buck_schematic_sep24.png" width="600">
+</p>
+

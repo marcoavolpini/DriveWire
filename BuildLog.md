@@ -293,3 +293,9 @@ Almost finished 6V buck converter schematic. Made soft start capacitor decision,
   <img src="Images/6V_buck_schematic_sep24.png" width="600">
 </p>
 
+# September 25
+Selected inductor based on saturation current, RMS current, DCR, size, shielding and other conditions determined necessary for the 6V buck design. Had to create a custom footprint referencing the datasheet: 
+
+<p align="center">
+  <img src="Images/AltiumFootprintInductor.png" width="600">
+</p>

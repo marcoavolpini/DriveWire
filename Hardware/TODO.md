@@ -1,1 +1,2 @@
 - don't forget to include test points
+- confirm ports vs net labels for cross-schematic functionality

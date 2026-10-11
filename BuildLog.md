@@ -299,3 +299,11 @@ Selected inductor based on saturation current, RMS current, DCR, size, shielding
 <p align="center">
   <img src="Images/AltiumFootprintInductor.png" width="600">
 </p>
+
+# October 10
+Chose smaller footprint inductor that still met needs for the 6 V buck. Also chose output capacitor and verified its ESR and DC bias derating capacitance to ensure it will minimize voltage ripple for the motors. 
+
+# October 11
+Finalized provisional schematic for 6 V buck, including using two 22 uF capacitors in parallel for input decoupling for 8.7 uF total at 8.4 VDC bias, to come closer to the IC datasheet 10 uF recommendation. 
+
+Starting work on the 3.3 V buck. 

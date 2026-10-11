@@ -306,4 +306,6 @@ Chose smaller footprint inductor that still met needs for the 6 V buck. Also cho
 # October 11
 Finalized provisional schematic for 6 V buck, including using two 22 uF capacitors in parallel for input decoupling for 8.7 uF total at 8.4 VDC bias, to come closer to the IC datasheet 10 uF recommendation. 
 
-Starting work on the 3.3 V buck. 
+Starting work on the 3.3 V buck. Determined current limit: 
+
+

@@ -312,3 +312,8 @@ Starting work on the 3.3 V buck. Determined current limit:
 </p>
 
 Also decided that a future Raspberry Pi integration would make more sense designing an additional buck breakout board for the 5 V power supply, feeding from battery voltage off a connector of the main PCB. Not worth designing an LDO or another buck with different current limits for a potential future design, when a breakout board could easily solve the problem and only require a connector for this PCB. 
+
+The 3.3 V buck is complete, so the DriveWire power converter schematics are complete: 
+<p align="center">
+  <img src="Images/Buck_Converters_Schematic.png" width="600">
+</p>

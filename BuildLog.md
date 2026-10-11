@@ -307,5 +307,8 @@ Chose smaller footprint inductor that still met needs for the 6 V buck. Also cho
 Finalized provisional schematic for 6 V buck, including using two 22 uF capacitors in parallel for input decoupling for 8.7 uF total at 8.4 VDC bias, to come closer to the IC datasheet 10 uF recommendation. 
 
 Starting work on the 3.3 V buck. Determined current limit: 
+<p align="center">
+  <img src="Images/3V3_current_capacity.png" width="600">
+</p>
 
-
+Also decided that a future Raspberry Pi integration would make more sense designing an additional buck breakout board for the 5 V power supply, feeding from battery voltage off a connector of the main PCB. Not worth designing an LDO or another buck with different current limits for a potential future design, when a breakout board could easily solve the problem and only require a connector for this PCB. 

@@ -135,6 +135,23 @@ GenerateClassCluster=0
 DocumentUniqueId=EGLUZRZH
 
 [Document6]
+DocumentPath=motor_driver.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=BNRFDMBK
+
+[Document7]
 DocumentPath=DriveWire_V1_Spin1.BomDoc
 AnnotationEnabled=1
 AnnotateStartValue=1

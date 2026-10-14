@@ -317,3 +317,9 @@ The 3.3 V buck is complete, so the DriveWire power converter schematics are comp
 <p align="center">
   <img src="Images/Buck_Converters_Schematic.png" width="600">
 </p>
+
+# October 13
+ESP32 schematic started; power, ground and input capacitors, as well as RESET and BOOT buttons in place. 
+
+# October 14
+UART male header pin footprints for future adapter option; won't be soldered in immediately. USB connector also wired. 

@@ -323,3 +323,25 @@ ESP32 schematic started; power, ground and input capacitors, as well as RESET an
 
 # October 14
 UART male header pin footprints for future adapter option; won't be soldered in immediately. USB connector also wired. 
+
+3V3 supply power mux created and completed. Prioritizes using 5 V USB power through the 3.3 V buck, but switches to LiPo input when USB is disconnected. 
+
+# October 15
+ESP32 schematic complete: 
+
+<p align="center">
+  <img src="Images/ESP32_Schematic.png" width="600">
+</p>
+
+Featuring: 
+- Native USB programming with ESD protection
+- Backup UART programming/debug header
+- Manual BOOT and RESET
+- All four motor PWM signals
+- I²C for INA219 and VL53L0X
+- Power-good, boost-control and mux-status signals
+- Two removable motor thermistors
+- Eight spare GPIOs, including three ADC1 channels
+- External JTAG header
+- Dual I²C expansion interface
+

@@ -1,3 +1,5 @@
 Record=TopLevelDocument|FileName=buck_converters.SchDoc|SheetNumber=3
-Record=NoMainPathDocument|SourceDocument=buck_converters.SchDoc|FileName=ESP32.SchDoc|SheetNumber=1
-Record=NoMainPathDocument|SourceDocument=buck_converters.SchDoc|FileName=Power.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=buck_converters.SchDoc|FileName=ESP32.SchDoc|SheetNumber=4
+Record=NoMainPathDocument|SourceDocument=buck_converters.SchDoc|FileName=logic_power_mux.SchDoc|SheetNumber=2
+Record=NoMainPathDocument|SourceDocument=buck_converters.SchDoc|FileName=motor_driver.SchDoc|SheetNumber=5
+Record=NoMainPathDocument|SourceDocument=buck_converters.SchDoc|FileName=Power.SchDoc|SheetNumber=1

@@ -67,6 +67,23 @@ GenerateClassCluster=0
 DocumentUniqueId=SLNTVFYC
 
 [Document2]
+DocumentPath=logic_power_mux.SchDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=0
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=VNKYVBAT
+
+[Document3]
 DocumentPath=buck_converters.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -83,7 +100,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=RARNWTFT
 
-[Document3]
+[Document4]
 DocumentPath=ESP32.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -100,7 +117,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=UJYEZRCO
 
-[Document4]
+[Document5]
 DocumentPath=DriveWirePCBLib.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -117,7 +134,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=BTQNFWDJ
 
-[Document5]
+[Document6]
 DocumentPath=SchemLib.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -134,7 +151,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=EGLUZRZH
 
-[Document6]
+[Document7]
 DocumentPath=motor_driver.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -151,7 +168,7 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=BNRFDMBK
 
-[Document7]
+[Document8]
 DocumentPath=DriveWire_V1_Spin1.BomDoc
 AnnotationEnabled=1
 AnnotateStartValue=1

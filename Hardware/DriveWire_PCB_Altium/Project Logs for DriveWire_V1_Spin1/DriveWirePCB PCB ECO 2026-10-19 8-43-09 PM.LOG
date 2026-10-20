@@ -1,0 +1,39 @@
+Added Component: Designator=TP1(TestPoint)
+Added Component: Designator=TP2(TestPoint)
+Added Component: Designator=TP3(TestPoint)
+Added Component: Designator=TP4(TestPoint)
+Added Component: Designator=TP5(TestPoint)
+Added Component: Designator=TP6(TestPoint)
+Added Component: Designator=TP7(TestPoint)
+Added Component: Designator=TP8(TestPoint)
+Added Component: Designator=TP9(TestPoint)
+Added Component: Designator=TP10(TestPoint)
+Added Component: Designator=TP11(TestPoint)
+Added Component: Designator=TP12(TestPoint)
+Added Component: Designator=TP13(TestPoint)
+Added Pin To Net: NetName=VBAT_PROTECTED Pin=TP1-1
+Added Pin To Net: NetName=MOTOR_BUS Pin=TP2-1
+Added Pin To Net: NetName=GND Pin=TP3-1
+Added Pin To Net: NetName=VBAT_BUS Pin=TP4-1
+Added Pin To Net: NetName=6V Pin=TP5-1
+Added Pin To Net: NetName=GND Pin=TP6-1
+Added Pin To Net: NetName=3V3 Pin=TP7-1
+Added Pin To Net: NetName=nFAULT Pin=TP8-1
+Added Pin To Net: NetName=6V_PG Pin=TP9-1
+Added Pin To Net: NetName=GND Pin=TP10-1
+Added Pin To Net: NetName=3V3_PG Pin=TP11-1
+Added Pin To Net: NetName=MOTOR_MUX_STATUS Pin=TP12-1
+Added Pin To Net: NetName=USB_VBUS Pin=TP13-1
+Added Member To Class: ClassName=Power Member=Component TP1 TestPoint
+Added Member To Class: ClassName=Power Member=Component TP2 TestPoint
+Added Member To Class: ClassName=Power Member=Component TP3 TestPoint
+Added Member To Class: ClassName=Power Member=Component TP4 TestPoint
+Added Member To Class: ClassName=buck_converters Member=Component TP5 TestPoint
+Added Member To Class: ClassName=buck_converters Member=Component TP6 TestPoint
+Added Member To Class: ClassName=buck_converters Member=Component TP7 TestPoint
+Added Member To Class: ClassName=ESP32 Member=Component TP8 TestPoint
+Added Member To Class: ClassName=ESP32 Member=Component TP9 TestPoint
+Added Member To Class: ClassName=ESP32 Member=Component TP10 TestPoint
+Added Member To Class: ClassName=ESP32 Member=Component TP11 TestPoint
+Added Member To Class: ClassName=ESP32 Member=Component TP12 TestPoint
+Added Member To Class: ClassName=ESP32 Member=Component TP13 TestPoint

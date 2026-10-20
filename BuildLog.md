@@ -345,3 +345,9 @@ Featuring:
 - External JTAG header
 - Dual I²C expansion interface
 
+# October 19
+Worked on the buck converters' input hot loops, placing the input capacitors close to the ICs with short, wide copper connections to minimize loop area and parasitic inductance. Added local ground-return paths and thermal vias in the exposed ground pads for heat spreading. The 3.3 V buck section is shown below:
+
+<p align="center">
+  <img src="Images/Buck_Hotloop_Oct19.png" width="600" alt="3.3 V buck input hot loop with close input capacitors, wide copper routing and thermal vias">
+</p>

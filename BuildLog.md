@@ -351,3 +351,10 @@ Worked on the buck converters' input hot loops, placing the input capacitors clo
 <p align="center">
   <img src="Images/Buck_Hotloop_Oct19.png" width="600" alt="3.3 V buck input hot loop with close input capacitors, wide copper routing and thermal vias">
 </p>
+
+# October 20
+Completed routing for the first DriveWire custom PCB, including the power converters, motor drivers and ESP32 interfaces.
+
+<p align="center">
+  <img src="Images/PCB_Routing_Complete_Oct20.png" width="600" alt="DriveWire custom PCB with routing complete">
+</p>

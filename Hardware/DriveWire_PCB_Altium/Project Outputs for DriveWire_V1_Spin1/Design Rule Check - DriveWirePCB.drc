@@ -1,38 +1,28 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\Marco\Documents\PlatformIO\Projects\DriveWire-Repo\Hardware\DriveWire_PCB_Altium\DriveWirePCB.PcbDoc
 Date     : 2026-10-20
-Time     : 7:13:50 PM
+Time     : 7:24:10 PM
 
 Processing Rule : Clearance Constraint (Gap=0.3mm) (InPolygon),(All)
 Rule Violations :0
 
 Processing Rule : Clearance Constraint (Gap=0.15mm) (All),(All)
-   Violation between Clearance Constraint: (0.1mm < 0.15mm) Between Pad R33-2(53.625mm,108.5mm) on Top Layer And Track (54.375mm,106.789mm)(54.375mm,108.5mm) on Top Layer 
-   Violation between Clearance Constraint: (Collision < 0.15mm) Between Track (10.2mm,94.45mm)(12.85mm,94.45mm) on Bottom Layer And Via (10.25mm,95.425mm) from Top Layer to Bottom Layer 
    Violation between Clearance Constraint: (0.111mm < 0.15mm) Between Track (16.416mm,8.525mm)(20.486mm,4.454mm) on Top Layer And Via (20.85mm,5.025mm) from Top Layer to Bottom Layer 
    Violation between Clearance Constraint: (0.127mm < 0.15mm) Between Track (20.486mm,4.008mm)(20.486mm,4.454mm) on Top Layer And Via (20.85mm,5.025mm) from Top Layer to Bottom Layer 
    Violation between Clearance Constraint: (0.05mm < 0.15mm) Between Track (23.6mm,10.925mm)(24.55mm,11.875mm) on Top Layer And Via (23.836mm,11.939mm) from Top Layer to Bottom Layer 
-   Violation between Clearance Constraint: (Collision < 0.15mm) Between Track (7.175mm,91.425mm)(10.2mm,94.45mm) on Bottom Layer And Via (10.25mm,95.425mm) from Top Layer to Bottom Layer 
    Violation between Clearance Constraint: (0.117mm < 0.15mm) Between Via (23.836mm,11.939mm) from Top Layer to Bottom Layer And Via (24.55mm,11.875mm) from Top Layer to Bottom Layer 
    Violation between Clearance Constraint: (0.075mm < 0.15mm) Between Via (24.55mm,11.875mm) from Top Layer to Bottom Layer And Via (25.225mm,11.9mm) from Top Layer to Bottom Layer 
-Rule Violations :8
+Rule Violations :5
 
 Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
-   Violation between Short-Circuit Constraint: Between Track (10.2mm,94.45mm)(12.85mm,94.45mm) on Bottom Layer And Via (10.25mm,95.425mm) from Top Layer to Bottom Layer Location : [X = 125.575mm][Y = 109.767mm]
-   Violation between Short-Circuit Constraint: Between Track (7.175mm,91.425mm)(10.2mm,94.45mm) on Bottom Layer And Via (10.25mm,95.425mm) from Top Layer to Bottom Layer Location : [X = 125.554mm][Y = 109.767mm]
-Rule Violations :2
+Rule Violations :0
 
 Processing Rule : Un-Routed Net Constraint ( (All) )
-   Violation between Un-Routed Net Constraint: Net GND Between Pad C28-1(48.5mm,13.125mm) on Top Layer And Track (50.5mm,19.375mm)(50.5mm,20.05mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net MOTOR_L_TEMP_ADC Between Pad J4-2(16.45mm,4.5mm) on Multi-Layer And Pad C29-2(20.5mm,1.757mm) on Top Layer 
    Violation between Un-Routed Net Constraint: Net NetJ3_A6 Between Pad J3-B6(7.425mm,30.325mm) on Top Layer And Pad J3-A6(7.425mm,31.325mm) on Top Layer 
    Violation between Un-Routed Net Constraint: Net NetJ3_A7 Between Pad J3-A7(7.425mm,30.825mm) on Top Layer And Pad J3-B7(7.425mm,31.825mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net ESP32_EN Between Pad R24-1(46.3mm,19.575mm) on Top Layer And Via (47.2mm,11.675mm) from Top Layer to Bottom Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Via (50.625mm,88.15mm) from Top Layer to Bottom Layer And Pad R34-1(51mm,93.5mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net 3V3 Between Pad R5-1(37.475mm,75.875mm) on Top Layer And Track (36.95mm,87.525mm)(37.875mm,87.525mm) on Top Layer 
-   Violation between Un-Routed Net Constraint: Net GND Between Via (45.225mm,1.775mm) from Top Layer to Bottom Layer And Pad TP10-1(54.25mm,1.4mm) on Top Layer 
+   Violation between Un-Routed Net Constraint: Net 3V3 Between Via (38.025mm,86.375mm) from Top Layer to Bottom Layer And Via (52.175mm,83.575mm) from Top Layer to Bottom Layer 
    Violation between Un-Routed Net Constraint: Net 3V3_BUCK_IN Between Via (47.3mm,85.6mm) from Top Layer to Bottom Layer And Via (47.3mm,86.4mm) from Top Layer to Bottom Layer 
-Rule Violations :9
+Rule Violations :4
 
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
@@ -49,78 +39,17 @@ Rule Violations :0
 Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
 Rule Violations :0
 
-Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (IsVia)
-Rule Violations :0
-
 Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (InComponent('J1'))
 Rule Violations :0
 
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (IsVia)
+Rule Violations :0
+
 Processing Rule : Minimum Annular Ring (Minimum=0.125mm) (All)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (1.175mm,105.25mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (1.2mm,109.65mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (11.125mm,63.25mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (12.85mm,94.45mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (13.4mm,7.675mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (13.775mm,95.175mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (14.65mm,94.65mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (17.95mm,97.25mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (17.95mm,99.95mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (21.225mm,93.875mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (21.5mm,62.575mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (21.7mm,89.375mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (28.275mm,63.55mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (28.2mm,55mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (31.25mm,63.525mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (32.575mm,78.875mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (36.225mm,66.45mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (36.225mm,67.225mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (36.225mm,68mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (36.825mm,66.45mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (36.825mm,67.225mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (36.825mm,68mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (37.475mm,75.2mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (37.55mm,59.8mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (38.1mm,13.225mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (38.1mm,20.15mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (38.2mm,11.6mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (38.769mm,58.119mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (4.05mm,84.25mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (4.693mm,87.977mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (41.301mm,2.35mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (41.369mm,1.73mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (41.725mm,7.925mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (41.7mm,6.275mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (42.075mm,73.975mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (42.075mm,75.775mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (44.05mm,32.05mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (44.6mm,69.275mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (45.2mm,64.675mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (45.975mm,57.975mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (46.325mm,22.35mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (46.6mm,85.6mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (46.6mm,86.4mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (47.325mm,63.225mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (47.3mm,85.6mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (47.3mm,86.4mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (48.975mm,7.975mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (5.6mm,87.15mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (5.6mm,87.85mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (50.7mm,24.675mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (52.175mm,83.575mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (53.125mm,24.7mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (6.4mm,87.15mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.1mm < 0.125mm) Via (6.4mm,87.85mm) from Top Layer to Bottom Layer (Annular Ring=0.1mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (6.725mm,63.175mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (6.875mm,10.2mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (7.175mm,91.425mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (7.55mm,87.85mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (7.6mm,16mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (7mm,105.25mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (7mm,109.65mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (8.4mm,89.05mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (9.175mm,63.25mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-   Violation between Minimum Annular Ring: (0.124998mm (4.9212mil) < 0.125001mm (4.9213mil)) Via (9.825mm,63.25mm) from Top Layer to Bottom Layer (Annular Ring=0.125mm) On (Top Layer)
-Rule Violations :64
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.075mm) (IsVia)
+Rule Violations :0
 
 Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=6.3mm) (All)
 Rule Violations :0
@@ -153,11 +82,12 @@ Rule Violations :4
 Processing Rule : Net Antennae (Tolerance=0mm) (All)
    Violation between Net Antennae: Via (15.55mm,75.375mm) from Top Layer to Bottom Layer 
    Violation between Net Antennae: Via (15.575mm,74.675mm) from Top Layer to Bottom Layer 
+   Violation between Net Antennae: Via (38.025mm,86.375mm) from Top Layer to Bottom Layer 
    Violation between Net Antennae: Via (47.3mm,85.6mm) from Top Layer to Bottom Layer 
    Violation between Net Antennae: Via (47.3mm,86.4mm) from Top Layer to Bottom Layer 
    Violation between Net Antennae: Via (8.95mm,77.725mm) from Top Layer to Bottom Layer 
    Violation between Net Antennae: Via (9.625mm,77.725mm) from Top Layer to Bottom Layer 
-Rule Violations :6
+Rule Violations :7
 
 Processing Rule : Board Clearance Constraint (Gap=0mm) (All)
    Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Arc (-1.1mm,102.42mm) on Top Overlay And Board Edge 
@@ -187,6 +117,6 @@ Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (Al
 Rule Violations :0
 
 
-Violations Detected : 123
+Violations Detected : 50
 Waived Violations : 0
-Time Elapsed        : 00:00:02
+Time Elapsed        : 00:00:00

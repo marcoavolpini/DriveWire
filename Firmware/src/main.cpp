@@ -10,11 +10,13 @@
 #include <task.h>
 #include <queue.h>
 
-DriveWireState state;
+DriveWireState sensorData;
+DriveWireState motorData;
 
 // initializing a queue handle for the sensor task that holds a snapshot of sensor telemetry
-// it is a pointer to a queue?
 QueueHandle_t sensorQueue = nullptr;
+// same for motor task
+QueueHandle_t motorCommandQueue = nullptr;
 
 // declaring sensorTask
 void sensorTask(void* parameter);
@@ -27,18 +29,20 @@ void setup(){
   Serial.println("DriveWire I2C Firmware Starting...");
 
   initializeMotors();
-  coastMotors(state);
+  coastMotors(motorData);
 
-  if (initializeSensors(state)) {Serial.println("Sensors Initialized...");}
-  else { Serial.println(state.ina219Online); Serial.println(state.tofOnline);}
+  if (initializeSensors(sensorData)) {Serial.println("Sensors Initialized...");}
+  else { Serial.println(sensorData.ina219Online); Serial.println(sensorData.tofOnline);}
 
 
 
   // gonna create the queue and assign it to the handle initialized globally
   sensorQueue = xQueueCreate(1, sizeof(DriveWireState));
+  // same with the motor queue
+  motorCommandQueue = xQueueCreate(1, sizeof(MotorCommand));
 
-  if (sensorQueue == nullptr) {
-    Serial.println("Failed to create sensor queue");
+  if (sensorQueue == nullptr || motorCommandQueue == nullptr) {
+    Serial.println("Failed to create sensor queue or motor queue");
 
     Serial.println("The program will not run");
     for ( ; ; ) {
@@ -51,7 +55,7 @@ void setup(){
     sensorTask, 
     "sensorTask", 
     4096, 
-    &state, 
+    &sensorData, 
     1, 
     nullptr
   );
@@ -91,28 +95,7 @@ void loop() {
   }
   
 
-  // better motor test
 
-  static unsigned long lastMotorChange = 0;
-  static bool motorsDriving = false;
-
-  unsigned long currentTime = millis();
-
-  if (!motorsDriving && currentTime-lastMotorChange >= 5000) {
-
-    drive(state, 255, 255);
-
-    motorsDriving = true;
-    lastMotorChange = currentTime;
-  } 
-  else if (motorsDriving && currentTime - lastMotorChange >= 6000) {
-
-    coastMotors(state);
-
-    motorsDriving = false;
-    lastMotorChange = currentTime;
-
-  }
 }
 
 void sensorTask(void* parameter) {

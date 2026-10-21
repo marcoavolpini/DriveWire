@@ -1,7 +1,7 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\Marco\Documents\PlatformIO\Projects\DriveWire-Repo\Hardware\DriveWire_PCB_Altium\DriveWirePCB.PcbDoc
 Date     : 2026-10-20
-Time     : 7:46:35 PM
+Time     : 8:05:27 PM
 
 Processing Rule : Clearance Constraint (Gap=0.3mm) (InPolygon),(All)
 Rule Violations :0
@@ -49,52 +49,49 @@ Processing Rule : Hole To Hole Clearance (Gap=0.25mm) (All),(All)
 Rule Violations :0
 
 Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
-   Violation between Minimum Solder Mask Sliver Constraint: (0.075mm < 0.1mm) Between Pad J3-(6.35mm,28.185mm) on Multi-Layer And Pad J3-B1_A12(7.425mm,27.875mm) on Top Layer [Top Solder] Mask Sliver [0.075mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.096mm < 0.1mm) Between Pad J3-(6.35mm,28.185mm) on Multi-Layer And Pad J3-B4_A9(7.425mm,28.675mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.075mm < 0.1mm) Between Pad J3-(6.35mm,33.965mm) on Multi-Layer And Pad J3-A1_B12(7.425mm,34.275mm) on Top Layer [Top Solder] Mask Sliver [0.075mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.096mm < 0.1mm) Between Pad J3-(6.35mm,33.965mm) on Multi-Layer And Pad J3-A4_B9(7.425mm,33.475mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]
-Rule Violations :4
+Rule Violations :0
 
 Processing Rule : Silk To Solder Mask (Clearance=0.15mm) (IsPad),(All)
-   Violation between Silk To Solder Mask Clearance Constraint: (0.006mm < 0.15mm) Between Pad R1-1(1.325mm,91.025mm) on Top Layer And Text "R1" (0.809mm,91.338mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.006mm]
-   Violation between Silk To Solder Mask Clearance Constraint: (0.036mm < 0.15mm) Between Pad R6-1(2mm,95.825mm) on Top Layer And Text "R6" (0.73mm,96.563mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.036mm]
-   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.15mm) Between Pad TP13-1(19.975mm,32.675mm) on Top Layer And Text "R26" (15.744mm,30.388mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
-Rule Violations :3
+Rule Violations :0
 
 Processing Rule : Silk to Silk (Clearance=0.254mm) (All),(All)
-   Violation between Silk To Silk Clearance Constraint: (0.158mm < 0.254mm) Between Text "C10" (41.596mm,80.738mm) on Top Overlay And Track (45.13mm,82.647mm)(46.88mm,82.647mm) on Top Overlay Silk Text to Silk Clearance [0.158mm]
-Rule Violations :1
+Rule Violations :0
 
 Processing Rule : Net Antennae (Tolerance=0mm) (All)
 Rule Violations :0
 
 Processing Rule : Board Clearance Constraint (Gap=0mm) (All)
-   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Arc (-0.9mm,102.425mm) on Top Overlay And Board Edge 
-   Violation between Board Outline Clearance(Outline Edge): (0.125mm < 0.3mm) Between Area Fill (0.125mm,104.625mm) (8.225mm,110.5mm) on Top Layer And Board Edge 
-   Violation between Board Outline Clearance(Outline Edge): (0.234mm < 0.3mm) Between Board Edge And Text "C24" (43.969mm,0.488mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.059mm < 0.3mm) Between Board Edge And Text "C4" (1.837mm,86.83mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.184mm < 0.3mm) Between Board Edge And Text "J4" (11.705mm,0.438mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.037mm < 0.3mm) Between Board Edge And Track (0.1mm,110.045mm)(8.3mm,110.045mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.037mm < 0.3mm) Between Board Edge And Track (0.1mm,99.885mm)(0.1mm,110.045mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.037mm < 0.3mm) Between Board Edge And Track (0.1mm,99.885mm)(8.3mm,99.885mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.175mm < 0.3mm) Between Board Edge And Track (0.275mm,0.3mm)(0.275mm,6.2mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.175mm < 0.3mm) Between Board Edge And Track (0.275mm,0.3mm)(4.775mm,0.3mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.175mm < 0.3mm) Between Board Edge And Track (0.275mm,6.2mm)(4.775mm,6.2mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (22.25mm,-6.61mm)(40.25mm,-6.61mm) on Top Overlay 
-   Violation between Board Outline Clearance(Outline Edge): (0.2mm < 0.3mm) Between Board Edge And Track (4.775mm,0.3mm)(4.775mm,6.2mm) on Top Overlay 
-Rule Violations :13
+Rule Violations :0
 
 Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
 Rule Violations :0
 
-Waived Violations Of Rule : Board Clearance Constraint (Gap=0mm) (All)
-   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (0.07mm,26.605mm)(1.35mm,26.605mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:41:02 PM
-   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (0.07mm,35.545mm)(1.35mm,35.545mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:40:53 PM
-   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (22.25mm,-6.61mm)(22.25mm,-0.16mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:44:54 PM
-   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (40.25mm,-6.61mm)(40.25mm,-0.16mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:44:47 PM
+Waived Violations Of Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.075mm < 0.1mm) Between Pad J3-(6.35mm,28.185mm) on Multi-Layer And Pad J3-B1_A12(7.425mm,27.875mm) on Top Layer [Top Solder] Mask Sliver [0.075mm]Waived by Marco Volpini at 2026-10-20 7:48:25 PM
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.096mm < 0.1mm) Between Pad J3-(6.35mm,28.185mm) on Multi-Layer And Pad J3-B4_A9(7.425mm,28.675mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]Waived by Marco Volpini at 2026-10-20 7:48:20 PM
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.075mm < 0.1mm) Between Pad J3-(6.35mm,33.965mm) on Multi-Layer And Pad J3-A1_B12(7.425mm,34.275mm) on Top Layer [Top Solder] Mask Sliver [0.075mm]Waived by Marco Volpini at 2026-10-20 7:48:03 PM
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.096mm < 0.1mm) Between Pad J3-(6.35mm,33.965mm) on Multi-Layer And Pad J3-A4_B9(7.425mm,33.475mm) on Top Layer [Top Solder] Mask Sliver [0.096mm]Waived by Marco Volpini at 2026-10-20 7:47:54 PM
 Waived Violations :4
 
+Waived Violations Of Rule : Board Clearance Constraint (Gap=0mm) (All)
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Arc (-0.9mm,102.425mm) on Top Overlay And Board Edge Waived by Marco Volpini at 2026-10-20 7:50:58 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.234mm < 0.3mm) Between Board Edge And Text "C24" (43.969mm,0.488mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:57:51 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.109mm < 0.3mm) Between Board Edge And Text "C4" (1.887mm,86.73mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 8:01:24 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (0.07mm,26.605mm)(1.35mm,26.605mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:41:02 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (0.07mm,35.545mm)(1.35mm,35.545mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:40:53 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.037mm < 0.3mm) Between Board Edge And Track (0.1mm,110.045mm)(8.3mm,110.045mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 8:05:13 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.037mm < 0.3mm) Between Board Edge And Track (0.1mm,99.885mm)(0.1mm,110.045mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:55:56 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.037mm < 0.3mm) Between Board Edge And Track (0.1mm,99.885mm)(8.3mm,99.885mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 8:05:03 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.175mm < 0.3mm) Between Board Edge And Track (0.275mm,0.3mm)(0.275mm,6.2mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 8:03:54 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.175mm < 0.3mm) Between Board Edge And Track (0.275mm,0.3mm)(4.775mm,0.3mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:56:49 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.175mm < 0.3mm) Between Board Edge And Track (0.275mm,6.2mm)(4.775mm,6.2mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:56:57 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (22.25mm,-6.61mm)(22.25mm,-0.16mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:44:54 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (22.25mm,-6.61mm)(40.25mm,-6.61mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 8:04:26 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (0.2mm < 0.3mm) Between Board Edge And Track (4.775mm,0.3mm)(4.775mm,6.2mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:56:47 PM
+   Waived Violation between Board Outline Clearance(Outline Edge): (Collision < 0.3mm) Between Board Edge And Track (40.25mm,-6.61mm)(40.25mm,-0.16mm) on Top Overlay Waived by Marco Volpini at 2026-10-20 7:44:47 PM
+Waived Violations :15
 
-Violations Detected : 21
-Waived Violations : 4
+
+Violations Detected : 0
+Waived Violations : 19
 Time Elapsed        : 00:00:01

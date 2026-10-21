@@ -364,3 +364,9 @@ Filled unused bottom-layer space with a GND pour and added via stitching to impr
 <p align="center">
   <img src="Images/PCB_GND_Pour_Oct20.png" width="600" alt="DriveWire PCB with bottom-layer GND pour and via stitching">
 </p>
+
+The first DriveWire PCB design is complete, pending final checks. Planning to submit it for fabrication shortly.
+
+<p align="center">
+  <img src="Images/DriveWire_Top_Render_Oct20.png" width="600" alt="Top-view 3D render of the completed DriveWire PCB design">
+</p>

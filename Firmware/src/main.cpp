@@ -20,6 +20,8 @@ QueueHandle_t motorCommandQueue = nullptr;
 
 // declaring sensorTask
 void sensorTask(void* parameter);
+// same for motor task
+void motorTask(void* parameter);
 
 
 void setup(){
@@ -70,6 +72,22 @@ void setup(){
     }
   }
 
+  taskResult = xTaskCreate(
+    motorTask,
+    "motorTask",
+    4096,
+    &motorData,
+    1,
+    nullptr
+);
+
+if (taskResult != pdPASS) {
+    Serial.println("Failed to create motor task.");
+    for (;;) {
+        vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+}
+
 
   // actually initializeMotors is a void function so we can't currently check if successful
 
@@ -93,7 +111,25 @@ void loop() {
     Serial.print(receivedState.distanceMm);
     Serial.println(" mm");    
   }
-  
+
+static const unsigned long testStart = millis();
+static unsigned long lastCommandTime = 0;
+
+const unsigned long now = millis();
+const unsigned long elapsed = now - testStart;
+
+if (elapsed >= 5000 && elapsed < 7000 &&
+    now - lastCommandTime >= 100) {
+
+    MotorCommand command;
+    command.leftPwm = 80;
+    command.rightPwm = 80;
+
+    xQueueOverwrite(motorCommandQueue, &command);
+    lastCommandTime = now;
+}
+
+  vTaskDelay(pdMS_TO_TICKS(10));
 
 
 }
@@ -119,4 +155,22 @@ void sensorTask(void* parameter) {
   }
 
 
+}
+
+void motorTask(void* parameter) {
+    DriveWireState* motorState =
+        static_cast<DriveWireState*>(parameter);
+
+    MotorCommand command;
+    const TickType_t commandTimeout = pdMS_TO_TICKS(500);
+
+    for (;;) {
+        if (xQueueReceive(motorCommandQueue,
+                          &command,
+                          commandTimeout) == pdTRUE) {
+            drive(*motorState, command.leftPwm, command.rightPwm);
+        } else {
+            coastMotors(*motorState);
+        }
+    }
 }

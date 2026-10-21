@@ -122,8 +122,8 @@ if (elapsed >= 5000 && elapsed < 7000 &&
     now - lastCommandTime >= 100) {
 
     MotorCommand command;
-    command.leftPwm = 80;
-    command.rightPwm = 80;
+    command.leftPwm = 140;
+    command.rightPwm = 140;
 
     xQueueOverwrite(motorCommandQueue, &command);
     lastCommandTime = now;
@@ -169,6 +169,8 @@ void motorTask(void* parameter) {
                           &command,
                           commandTimeout) == pdTRUE) {
             drive(*motorState, command.leftPwm, command.rightPwm);
+            Serial.printf("Motor received: L=%d R=%d\n",
+              command.leftPwm, command.rightPwm);
         } else {
             coastMotors(*motorState);
         }

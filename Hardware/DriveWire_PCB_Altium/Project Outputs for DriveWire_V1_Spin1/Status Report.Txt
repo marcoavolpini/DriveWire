@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [DriveWire_V1_Spin1.PrjPcb]
+   Generated File[DriveWirePCB-RoundHoles.TXT]
+   Generated File[DriveWirePCB-SlotHoles.TXT]
+   Generated File[DriveWirePCB.LDP]
+   Generated File[DriveWirePCB.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 8:53:04 PM On 2026-10-20

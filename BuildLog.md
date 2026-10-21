@@ -358,3 +358,9 @@ Completed routing for the first DriveWire custom PCB, including the power conver
 <p align="center">
   <img src="Images/PCB_Routing_Complete_Oct20.png" width="600" alt="DriveWire custom PCB with routing complete">
 </p>
+
+Filled unused bottom-layer space with a GND pour and added via stitching to improve copper balance for manufacturing and ground-return continuity for signal integrity. DRC now reports zero active violations (19 waived).
+
+<p align="center">
+  <img src="Images/PCB_GND_Pour_Oct20.png" width="600" alt="DriveWire PCB with bottom-layer GND pour and via stitching">
+</p>

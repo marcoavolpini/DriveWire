@@ -371,7 +371,16 @@ The first DriveWire PCB design is complete, pending final checks. Planning to su
   <img src="Images/DriveWire_Top_Render_Oct20.png" width="600" alt="Top-view 3D render of the completed DriveWire PCB design">
 </p>
 
+
 # October 21
 Added a dedicated [FreeRTOS motor task](Firmware/src/main.cpp) with a single-item command queue and separate motor/sensor state. The task applies left/right PWM commands and coasts both motors if no new command arrives within 500 ms.
 
 Added a temporary test that waits five seconds, then sends PWM 140/255 to both motors every 100 ms for two seconds before stopping commands to exercise the timeout. Sensor telemetry continues alongside the motor task.
+
+
+# October 23
+DriveWire sent to fab! 
+
+<p align="center">
+  <img src="Images/JLC_confirmation.png" width="600" alt="JLC PCB order confirmation screen">
+</p>

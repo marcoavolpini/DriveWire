@@ -2,3 +2,6 @@
 Hardware/DriveWire_PCB_Altium/History/
 Hardware/DriveWire_PCB_Altium/__Previews/
 Hardware/__Previews/
+
+# Altium working outputs; preserve fabrication packages in Hardware/Fab Files/
+/Hardware/DriveWire_PCB_Altium/Project Outputs for DriveWire_V1_Spin1/

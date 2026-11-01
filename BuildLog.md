@@ -394,6 +394,6 @@ Soldered some of the components onto the board. measured resistance using the DM
 I also similarly measured the 3.3 V rail to GND for resistance to check for shorts, and it was also in the several kOhm range, so I connected USB-C to my laptop, and measured 3.31 V across the 3.3 V rail at the ESP32 test point. 
 
 <p align="center">
-  <img src="Images/PCB_soldering_nov1.jpg" width="600" alt="JLC PCB order confirmation screen">
+  <img src="Images/PCB_soldering_nov1.jpg" width="300" alt="JLC PCB order confirmation screen">
 </p>
 

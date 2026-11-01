@@ -392,3 +392,8 @@ DriveWire PCB recieved!
 Soldered some of the components onto the board. measured resistance using the DMM between the VBAT and GND rails, and it was in the sevaral kOhm range as expected. Connecting battery voltage, I measured 7.88 V at Q2 source which is perfect. 
 
 I also similarly measured the 3.3 V rail to GND for resistance to check for shorts, and it was also in the several kOhm range, so I connected USB-C to my laptop, and measured 3.31 V across the 3.3 V rail at the ESP32 test point. 
+
+<p align="center">
+  <img src="Images/PCB_soldering_nov1.png" width="600" alt="JLC PCB order confirmation screen">
+</p>
+

@@ -15,27 +15,7 @@ def parse_telemetry(line):
     # return the values
     return time_s, vBat_v, current_mA, distance_mm
 
-
-def main(): 
-
-    telemetryData = [
-    "0.0,7.8,250.0,600", 
-    "0.1,7.7,260.0,580", 
-    "0.2,7.7,280.2,540", 
-    ]
-
-    
-
-    # opening a csv file
-    with open("telemetry.csv", "w", newline="") as output_file: 
-        writer = csv.writer(output_file)
-        writer.writerow(["Time (s)","Battery Voltage (V)", "Battery Current (mA)", "Distance in Front (mm)"])
-        
-        for line in telemetryData: 
-            time_s, vBat_v, current_mA, distance_mm = parse_telemetry(line)
-            writer.writerow([time_s, vBat_v, current_mA, distance_mm])
-    
-
+def analyze_csv(filename):
     # reading the csv file
 
     time = []
@@ -43,7 +23,7 @@ def main():
     current = []
     distance = []
 
-    with open("telemetry.csv", "r", newline="") as input_file: 
+    with open(filename, "r", newline="") as input_file: 
         reader = csv.DictReader(input_file)
 
         for row in reader: 
@@ -73,13 +53,56 @@ def main():
     axes[2].set_xlabel("Time (s)")
     axes[2].set_ylabel("Distance in Front (mm)")    
 
-    figure.tight_layout()
-    plt.show()
-
     # simple stats
     print("Lowest Voltage:", min(voltage), "V")
     print("Highest Current:", max(current), "mA")
     print("Closest object in front:", min(distance), "mm")
+
+
+    figure.tight_layout()
+    plt.show()
+
+
+def simulate_telemetry(sample_index): 
+    time_s = sample_index * 0.1
+    vBat_v = 7.8 - 0.001*sample_index
+    current_mA = 250 + 0.5*sample_index
+    distance_mm = 600 - 2*sample_index
+
+    return f"{time_s},{vBat_v},{current_mA},{distance_mm}"
+    
+
+def main(): 
+
+    # prepping live data stream
+    live_time = []
+    live_voltage = []
+    live_current = []
+
+    live_figure, live_axes = plt.subplots()
+    voltage_trace, = live_axes.plot([], []) # initializes plot and saves line object to voltage_trace
+
+
+    
+    # opening a csv file
+    with open("telemetry.csv", "w", newline="") as output_file: 
+        writer = csv.writer(output_file)
+        writer.writerow(["Time (s)","Battery Voltage (V)", "Battery Current (mA)", "Distance in Front (mm)"])
+        
+        for index in range(100):
+            line = simulate_telemetry(index)
+            time_s, vBat_v, current_mA, distance_mm = parse_telemetry(line)
+            writer.writerow([time_s, vBat_v, current_mA, distance_mm])
+
+            live_time.append(time_s)
+            live_voltage.append(vBat_v)
+            voltage_trace.set_data(live_time, live_voltage)
+            live_axes.relim()
+            live_axes.autoscale_view()
+
+            plt.pause(0.1)
+    
+    analyze_csv("telemetry.csv")
 
 
 

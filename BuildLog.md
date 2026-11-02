@@ -397,7 +397,6 @@ I also similarly measured the 3.3 V rail to GND for resistance to check for shor
   <img src="Images/PCB_soldering_nov1.jpg" width="300" alt="JLC PCB order confirmation screen">
 </p>
 
-# Python telemetry tooling
 Included the [Python telemetry tool](Firmware/tools/telemetry.py) for live serial plotting, CSV logging and basic post-run analysis of voltage, current and distance. Verified on the USB-powered breadboard prototype.
 
 <p align="center">

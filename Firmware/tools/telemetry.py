@@ -1,5 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
+import serial
 
 
 def parse_telemetry(line): 
@@ -85,31 +86,39 @@ def main():
     current_trace, = live_axes[1].plot([], []) # comma because axes.plot returns a list
     distance_trace, = live_axes[2].plot([], [])
 
-    
-    # opening a csv file
-    with open("telemetry.csv", "w", newline="") as output_file: 
-        writer = csv.writer(output_file)
-        writer.writerow(["Time (s)","Battery Voltage (V)", "Battery Current (mA)", "Distance in Front (mm)"])
+
+    #getting data from serial
+    with serial.Serial("COM5", 115200, timeout=1) as port:
+        # opening a csv file
+        with open("telemetry.csv", "w", newline="") as output_file: 
+            writer = csv.writer(output_file)
+            writer.writerow(["Time (s)","Battery Voltage (V)", "Battery Current (mA)", "Distance in Front (mm)"])
         
-        for index in range(100):
-            line = simulate_telemetry(index)
-            time_s, vBat_v, current_mA, distance_mm = parse_telemetry(line)
-            writer.writerow([time_s, vBat_v, current_mA, distance_mm])
+            for index in range(100):
+                raw_bytes = port.readline()
+                line = raw_bytes.decode("utf-8", errors="replace").strip()
 
-            live_time.append(time_s)
-            live_voltage.append(vBat_v)
-            live_current.append(current_mA)
-            live_distance.append(distance_mm)
+                try:
+                    time_s, vBat_v, current_mA, distance_mm = parse_telemetry(line)
+                except (ValueError, IndexError):
+                    continue
+                
+                writer.writerow([time_s, vBat_v, current_mA, distance_mm])
 
-            voltage_trace.set_data(live_time, live_voltage)
-            current_trace.set_data(live_time, live_current)
-            distance_trace.set_data(live_time, live_distance)
+                live_time.append(time_s)
+                live_voltage.append(vBat_v)
+                live_current.append(current_mA)
+                live_distance.append(distance_mm)
 
-            for ax in live_axes:
-                ax.relim()
-                ax.autoscale_view()
+                voltage_trace.set_data(live_time, live_voltage)
+                current_trace.set_data(live_time, live_current)
+                distance_trace.set_data(live_time, live_distance)
 
-            plt.pause(0.1)
+                for ax in live_axes:
+                    ax.relim()
+                    ax.autoscale_view()
+
+                plt.pause(0.1)
     
     analyze_csv("telemetry.csv")
 

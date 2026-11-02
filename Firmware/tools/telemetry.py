@@ -1,4 +1,5 @@
 import csv
+import matplotlib.pyplot as plt
 
 
 def parse_telemetry(line): 
@@ -33,6 +34,47 @@ def main():
         for line in telemetryData: 
             time_s, vBat_v, current_mA, distance_mm = parse_telemetry(line)
             writer.writerow([time_s, vBat_v, current_mA, distance_mm])
+    
+
+    # reading the csv file
+
+    time = []
+    voltage = []
+    current = []
+    distance = []
+
+    with open("telemetry.csv", "r", newline="") as input_file: 
+        reader = csv.DictReader(input_file)
+
+        for row in reader: 
+            time_s = float(row["Time (s)"])
+            vBat_v = float(row["Battery Voltage (V)"])
+            current_mA = float(row["Battery Current (mA)"])
+            distance_mm = float(row["Distance in Front (mm)"])
+
+            time.append(time_s)
+            voltage.append(vBat_v)
+            current.append(current_mA)
+            distance.append(distance_mm)
+
+    # plotting
+    figure, axes = plt.subplots(3, 1, sharex=True)
+
+    axes[0].plot(time, voltage)
+    axes[0].set_title("Battery Voltage vs Time")
+    axes[0].set_ylabel("Battery Voltage (V)")
+
+    axes[1].plot(time, current)
+    axes[1].set_title("Battery Current vs Time")
+    axes[1].set_ylabel("Battery Current (mA)")
+
+    axes[2].plot(time, distance)
+    axes[2].set_title("Distance in Front vs Time")
+    axes[2].set_xlabel("Time (s)")
+    axes[2].set_ylabel("Distance in Front (mm)")    
+
+    figure.tight_layout()
+    plt.show()
 
 
 

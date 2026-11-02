@@ -1,0 +1,4 @@
+Time (s),Battery Voltage (V),Battery Current (mA),Distance in Front (mm)
+0.0,7.8,250.0,600.0
+0.1,7.7,260.0,580.0
+0.2,7.7,280.2,540.0

@@ -76,6 +76,11 @@ def main():
     figure.tight_layout()
     plt.show()
 
+    # simple stats
+    print("Lowest Voltage:", min(voltage), "V")
+    print("Highest Current:", max(current), "mA")
+    print("Closest object in front:", min(distance), "mm")
+
 
 
 main()

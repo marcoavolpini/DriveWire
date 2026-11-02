@@ -1,4 +1,8 @@
-telemetryData = "0.0,7.8,250.0,600"
+telemetryData = [
+    "0.0,7.8,250.0,600", 
+    "0.1,7.7,260.0,580", 
+    "0.2,7.7,280.2,540", 
+]
 
 def parse_telemetry(line): 
     # parsing commas
@@ -13,5 +17,8 @@ def parse_telemetry(line):
     # return the values
     return time_s, vBat_v, current_mA, distance_mm
 
-result = parse_telemetry(telemetryData)
-print(result)
+for line in telemetryData: 
+    time_s, vBat_v, current_mA, distance_mm = parse_telemetry(line)
+
+    print(vBat_v)
+

@@ -99,6 +99,18 @@ void loop() {
   DriveWireState receivedState;
 
   if (xQueueReceive(sensorQueue, &receivedState, 0) == pdTRUE) {
+    
+    Serial.print(millis()/1000.0);
+    Serial.print(",");
+    Serial.print(receivedState.batteryVoltageV);
+    Serial.print(",");
+    Serial.print(receivedState.currentMa);
+    Serial.print(",");
+    Serial.println(receivedState.distanceMm);
+    
+    
+    
+    /*
     Serial.print("Battery voltage: ");
     Serial.print(receivedState.batteryVoltageV);
     Serial.println(" V");  
@@ -110,6 +122,7 @@ void loop() {
     Serial.print("Distance in front: ");
     Serial.print(receivedState.distanceMm);
     Serial.println(" mm");    
+    */
   }
 
 static const unsigned long testStart = millis();
@@ -169,8 +182,8 @@ void motorTask(void* parameter) {
                           &command,
                           commandTimeout) == pdTRUE) {
             drive(*motorState, command.leftPwm, command.rightPwm);
-            Serial.printf("Motor received: L=%d R=%d\n",
-              command.leftPwm, command.rightPwm);
+            //Serial.printf("Motor received: L=%d R=%d\n",
+            //  command.leftPwm, command.rightPwm);
         } else {
             coastMotors(*motorState);
         }

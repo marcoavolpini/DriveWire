@@ -78,10 +78,12 @@ def main():
     live_time = []
     live_voltage = []
     live_current = []
+    live_distance = []
 
-    live_figure, live_axes = plt.subplots()
-    voltage_trace, = live_axes.plot([], []) # initializes plot and saves line object to voltage_trace
-
+    live_figure, live_axes = plt.subplots(3, 1, sharex = True)
+    voltage_trace, = live_axes[0].plot([], []) # initializes plot and saves line object to voltage_trace
+    current_trace, = live_axes[1].plot([], []) # comma because axes.plot returns a list
+    distance_trace, = live_axes[2].plot([], [])
 
     
     # opening a csv file
@@ -96,9 +98,16 @@ def main():
 
             live_time.append(time_s)
             live_voltage.append(vBat_v)
+            live_current.append(current_mA)
+            live_distance.append(distance_mm)
+
             voltage_trace.set_data(live_time, live_voltage)
-            live_axes.relim()
-            live_axes.autoscale_view()
+            current_trace.set_data(live_time, live_current)
+            distance_trace.set_data(live_time, live_distance)
+
+            for ax in live_axes:
+                ax.relim()
+                ax.autoscale_view()
 
             plt.pause(0.1)
     

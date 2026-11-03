@@ -4,7 +4,7 @@
 
 // motor A, left motor
 constexpr int LEFT_IN1_PIN = 8;
-constexpr int LEFT_IN2_PIN = 3;
+constexpr int LEFT_IN2_PIN = 18;
 
 // motor B, right motor
 constexpr int RIGHT_IN1_PIN = 10;

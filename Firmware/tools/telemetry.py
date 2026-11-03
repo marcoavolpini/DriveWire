@@ -88,7 +88,7 @@ def main():
 
 
     #getting data from serial
-    with serial.Serial("COM5", 115200, timeout=1) as port:
+    with serial.Serial("COM4", 115200, timeout=1) as port:
         # opening a csv file
         with open("telemetry.csv", "w", newline="") as output_file: 
             writer = csv.writer(output_file)

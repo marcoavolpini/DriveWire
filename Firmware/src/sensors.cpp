@@ -116,6 +116,10 @@ bool refreshElectricalTelemetry(DriveWireState& state) {
 // distance ToF telemetry
 bool refreshDistanceTelemetry(DriveWireState& state) {
 
+    if (!state.tofOnline) { // stops from calling it if disconnected
+    return false;
+    }
+
     // a type of measurement struct
     VL53L0X_RangingMeasurementData_t measure;
     uint16_t distance = 0;

@@ -403,3 +403,10 @@ Included the [Python telemetry tool](Firmware/tools/telemetry.py) for live seria
   <img src="Images/Live_Serial_Telemetry.png" width="600" alt="Live voltage, current and distance plots from the DriveWire breadboard prototype">
 </p>
 
+# November 4
+Flashed the firmware onto the custom PCB and verified I²C communication with the onboard INA219. Live telemetry is streaming over USB-C into the Python plotting tool. Testing was done on USB power with the battery and distance sensor disconnected.
+
+<p align="center">
+  <img src="Images/PCB_Live_Telemetry_Nov4.png" width="600" alt="Telemetry plots from the DriveWire custom PCB over USB with the battery and distance sensor disconnected">
+</p>
+

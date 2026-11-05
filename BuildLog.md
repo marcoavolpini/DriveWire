@@ -404,7 +404,7 @@ Included the [Python telemetry tool](Firmware/tools/telemetry.py) for live seria
 </p>
 
 # November 4
-Flashed the firmware onto the custom PCB and verified I²C communication with the onboard INA219. Live telemetry is streaming over USB-C into the Python plotting tool. Testing was done on USB power with the battery and distance sensor disconnected.
+Flashed the firmware onto the custom PCB and verified I²C communication with the onboard INA219. Live telemetry is streaming over USB-C into the Python plotting tool. Testing was done on USB power with the battery and distance sensor disconnected. Also verified 6.02 V on the 6 V buck rail while on battery power. 
 
 <p align="center">
   <img src="Images/PCB_Live_Telemetry_Nov4.png" width="600" alt="Telemetry plots from the DriveWire custom PCB over USB with the battery and distance sensor disconnected">

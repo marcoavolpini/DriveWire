@@ -53,6 +53,11 @@ ledcSetup(4, pwmFreq, 8))== 0){
 
     ledcWrite(R_IN1_CH, 0);
     ledcWrite(R_IN2_CH, 0);
+
+    // wake the motor driver by putting nSLEEP high
+    pinMode(38, OUTPUT);
+    digitalWrite(38, HIGH);
+    delay(2);
 }
 
 // left motor control

@@ -109,3 +109,9 @@ I tested stall current with the new 2S LiPo battery by having the motors on full
 `Battery current: 1330.80 mA`
 
 I noticed that the battery voltage readings were dropping by around 1.2 V during stall current, which would be a concerning amount of battery sag. To see if this was the battery, or simply internal resistances in the prototype circuit, I conducted the stall current test again, this time also measuring the power rails with a DMM to see if the ~1.2 V voltage drop seen by the INA219 was due to prototype imperfections and resistances, or if the battery was sagging a concerning amount. The power rails (connected directly to battery terminals), went from 7.78 V normal operation to 7.34 V during stall current. So the 6.39 V readings I have been seeing during these tests are due to losses in the circuitry rather than an issue with the battery. This inefficiency is expected to be entirely resolved by the PCB. 
+
+# November 5
+
+**Motor commands received, but neither motor moved (resolved).** Serial prints after `drive()` confirmed that commands were reaching the FreeRTOS motor task. Checking the schematic revealed that the DRV8833's `nSLEEP` input is connected to GPIO38 with a pulldown through R32, but the firmware never drove it high. The driver was remaining asleep. Added GPIO38 initialization and a 2 ms wake delay inside `initializeMotors()`, after setting all PWM outputs to zero. Both motors then ran on the custom PCB.
+
+**Stall current reading five times too low (scale corrected).** The Adafruit INA219 default calibration assumes a 100 mΩ shunt; the PCB has a 20 mΩ shunt. Updated `sensors.cpp` to calculate `current_mA = shuntVoltage_mV / 0.020`, using the already-checked shunt-voltage reading. The corrected capture peaked at 1.503 A battery-side. Reference-current verification is still pending. See the [November 5 build-log entry](BuildLog.md#november-5) for the plot and CSV.

@@ -9,6 +9,8 @@
 Adafruit_INA219 ina219;
 Adafruit_VL53L0X tof;
 
+constexpr float SHUNT_RESISTANCE_OHMS = 0.020f;
+
 constexpr int SDA_PIN = 7;
 constexpr int SCL_PIN = 15;
 
@@ -53,7 +55,7 @@ bool refreshElectricalTelemetry(DriveWireState& state) {
     // reading status'
     bool busVoltageSuccess = false;
     bool shuntVoltageSuccess = false;
-    bool currentSuccess = false;
+    //bool currentSuccess = false; not used since different shunt and manual calculations used
 
     bool refreshSuccess = false;
 
@@ -77,7 +79,7 @@ bool refreshElectricalTelemetry(DriveWireState& state) {
     // important to test which side the shunt voltage is actually on to know sign in this equation
     batteryVoltage = busVoltage + (shuntVoltage_mV / 1000);
 
-
+    /*
     // refresh the system current
     currentmA = ina219.getCurrent_mA();
     currentSuccess = ina219.success();
@@ -86,11 +88,15 @@ bool refreshElectricalTelemetry(DriveWireState& state) {
         state.ina219Online = false;
         return false;
     }
+    */
+    
+    // Calculate current using the PCB's 20 milliohm shunt.
+    currentmA = shuntVoltage_mV / SHUNT_RESISTANCE_OHMS;
 
 
     // refresh system power, doesnt really need to be in an if statement anymore
 
-    if (busVoltageSuccess && shuntVoltageSuccess && currentSuccess) {
+    if (busVoltageSuccess && shuntVoltageSuccess /*&& currentSuccess*/) {
         systemPower = batteryVoltage * currentmA;
 
         refreshSuccess = true;
@@ -119,6 +125,7 @@ bool refreshDistanceTelemetry(DriveWireState& state) {
     if (!state.tofOnline) { // stops from calling it if disconnected
     return false;
     }
+    
 
     // a type of measurement struct
     VL53L0X_RangingMeasurementData_t measure;

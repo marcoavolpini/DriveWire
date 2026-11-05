@@ -410,3 +410,18 @@ Flashed the firmware onto the custom PCB and verified I²C communication with th
   <img src="Images/PCB_Live_Telemetry_Nov4.png" width="600" alt="Telemetry plots from the DriveWire custom PCB over USB with the battery and distance sensor disconnected">
 </p>
 
+# November 5
+Connected the VL53L0X ToF sensor to the custom PCB's I²C headers and confirmed live distance readings alongside battery voltage and current in the Python telemetry plots.
+
+Got both motors running through the FreeRTOS motor task on the custom PCB. Initially neither motor moved, even though serial debugging showed the task receiving PWM commands and reaching `drive()`. Tracing the schematic revealed that the DRV8833's active-low `nSLEEP` input is connected to ESP32 GPIO38 and held low by R32. The firmware was never waking the driver. Added the wake sequence to `initializeMotors()`: set the PWM outputs to zero, drive GPIO38 high, then wait 2 ms. Both motors responded after this change.
+
+The first stall plots also exposed a current-scaling mismatch: the Adafruit INA219 default calibration assumes a 100 mΩ shunt, while the PCB uses 20 mΩ. Corrected the firmware to calculate current directly from the measured shunt voltage using `I_mA = Vshunt_mV / 0.020`, which also corrects the calculated power. This fixes the nominal scale; comparison against a reference current measurement is still to come.
+
+Captured a corrected 6 V motor-supply stall run with a **1.503 A peak battery-side current** and battery voltage dipping from approximately **7.69 V to 7.46 V**, then recovering after the load was removed. These are battery-side measurements, not individual motor currents or a measurement of the 6 V rail under load. [Corrected CSV capture](Firmware/6VStallRunCorrected.csv).
+
+<p align="center">
+  <img src="Images/6VStallCorrected.png" width="720" alt="November 5 stall capture with corrected 20 milliohm current scaling: battery voltage, battery current and front distance">
+</p>
+
+The firmware still uses a temporary timed motor test. Next is custom PWM command input through the existing motor-command queue, followed by Wi-Fi control and the web dashboard.
+

@@ -33,6 +33,8 @@ void setup(){
   initializeMotors();
   coastMotors(motorData);
 
+
+
   if (initializeSensors(sensorData)) {Serial.println("Sensors Initialized...");}
   else { Serial.println(sensorData.ina219Online); Serial.println(sensorData.tofOnline);}
 
@@ -131,18 +133,20 @@ static unsigned long lastCommandTime = 0;
 const unsigned long now = millis();
 const unsigned long elapsed = now - testStart;
 
-if (elapsed >= 5000 && elapsed < 7000 &&
+
+if (elapsed >= 2500 && elapsed < 10000 &&
     now - lastCommandTime >= 100) {
 
     MotorCommand command;
-    command.leftPwm = 140;
-    command.rightPwm = 140;
+    command.leftPwm = 255;
+    command.rightPwm = 255;
 
     xQueueOverwrite(motorCommandQueue, &command);
     lastCommandTime = now;
 }
 
   vTaskDelay(pdMS_TO_TICKS(10));
+
 
 
 }
@@ -182,8 +186,8 @@ void motorTask(void* parameter) {
                           &command,
                           commandTimeout) == pdTRUE) {
             drive(*motorState, command.leftPwm, command.rightPwm);
-            //Serial.printf("Motor received: L=%d R=%d\n",
-            //  command.leftPwm, command.rightPwm);
+            Serial.printf("Motor received: L=%d R=%d\n",
+            command.leftPwm, command.rightPwm);
         } else {
             coastMotors(*motorState);
         }

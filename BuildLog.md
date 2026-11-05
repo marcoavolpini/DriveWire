@@ -417,7 +417,7 @@ Got both motors running through the FreeRTOS motor task on the custom PCB. Initi
 
 The first stall plots also exposed a current-scaling mismatch: the Adafruit INA219 default calibration assumes a 100 mΩ shunt, while the PCB uses 20 mΩ. Corrected the firmware to calculate current directly from the measured shunt voltage using `I_mA = Vshunt_mV / 0.020`, which also corrects the calculated power. This fixes the nominal scale; comparison against a reference current measurement is still to come.
 
-Captured a corrected 6 V motor-supply stall run with a **1.503 A peak battery-side current** and battery voltage dipping from approximately **7.69 V to 7.46 V**, then recovering after the load was removed. These are battery-side measurements, not individual motor currents or a measurement of the 6 V rail under load. [Corrected CSV capture](Firmware/6VStallRunCorrected.csv).
+Captured a corrected 6 V motor-supply stall run with a **1.503 A peak battery-side current** and battery voltage dipping from approximately **7.69 V to 7.46 V**, then recovering after the the motors were set back to coast. These are battery-side measurements, not individual motor currents or a measurement of the 6 V rail under load. [Corrected CSV capture](Firmware/6VStallRunCorrected.csv).
 
 <p align="center">
   <img src="Images/6VStallCorrected.png" width="720" alt="November 5 stall capture with corrected 20 milliohm current scaling: battery voltage, battery current and front distance">

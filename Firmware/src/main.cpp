@@ -172,8 +172,8 @@ void loop() {
   int rightPWM = 0;
 
   bool accepted = false;
-  if (cmdComplete && !invalidLength) {
-    if (sscanf(cmdBuffer, "M,%d,%d", &leftPWM, &rightPWM) == 2){
+  if (cmdComplete) {
+    if (!invalidLength && sscanf(cmdBuffer, "M,%d,%d", &leftPWM, &rightPWM) == 2){
       accepted = true;
       MotorCommand command;
       command.leftPwm = leftPWM;
@@ -181,13 +181,11 @@ void loop() {
 
       xQueueOverwrite(motorCommandQueue, &command);
       
-      
-      Serial.println(accepted ? "OK": "ERR");
-      cmdComplete = false;
-      cmdBufferIndex = 0;
-      invalidLength == false;
     }
-    
+    Serial.println(accepted ? "OK": "ERR");
+    cmdComplete = false;
+    cmdBufferIndex = 0;
+    invalidLength = false;
   }
 
   vTaskDelay(pdMS_TO_TICKS(10));

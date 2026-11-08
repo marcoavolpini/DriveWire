@@ -127,15 +127,15 @@ void loop() {
     */
   }
 
-static const unsigned long testStart = millis();
-static unsigned long lastCommandTime = 0;
+  /*
+  static const unsigned long testStart = millis();
+  static unsigned long lastCommandTime = 0;
 
-const unsigned long now = millis();
-const unsigned long elapsed = now - testStart;
+  const unsigned long now = millis();
+  const unsigned long elapsed = now - testStart;
 
 
-if (elapsed >= 2500 && elapsed < 10000 &&
-    now - lastCommandTime >= 100) {
+  if (now - lastCommandTime >= 100) {
 
     MotorCommand command;
     command.leftPwm = 255;
@@ -143,7 +143,23 @@ if (elapsed >= 2500 && elapsed < 10000 &&
 
     xQueueOverwrite(motorCommandQueue, &command);
     lastCommandTime = now;
-}
+
+    
+  }
+  */
+
+  if (Serial.available()) {
+
+    char cmdBuffer[11];
+
+    for (int i = 0; i < Serial.available(); i++) {
+      cmdBuffer[i] = static_cast<char>(Serial.read());
+      if (cmdBuffer[i] == 'n') {
+        break;
+      }
+    }
+  }
+
 
   vTaskDelay(pdMS_TO_TICKS(10));
 
@@ -186,8 +202,10 @@ void motorTask(void* parameter) {
                           &command,
                           commandTimeout) == pdTRUE) {
             drive(*motorState, command.leftPwm, command.rightPwm);
+            /*
             Serial.printf("Motor received: L=%d R=%d\n",
             command.leftPwm, command.rightPwm);
+            */
         } else {
             coastMotors(*motorState);
         }

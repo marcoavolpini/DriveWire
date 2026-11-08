@@ -62,6 +62,9 @@ ledcSetup(4, pwmFreq, 8))== 0){
     pinMode(38, OUTPUT);
     digitalWrite(38, HIGH);
     delay(2);
+
+    // setup boost pin
+    pinMode(BOOST_SEL, OUTPUT);
 }
 
 // left motor control
@@ -138,7 +141,6 @@ void brakeMotors(DriveWireState& state) {
 }
 
 void boost(DriveWireState& state, bool cmd) {
-    pinMode(BOOST_SEL, OUTPUT);
     if (cmd) {
         digitalWrite(BOOST_SEL, HIGH);
     } else {

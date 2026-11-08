@@ -8,6 +8,8 @@ struct DriveWireState {
     int16_t leftMotorPwm = 0;
     int16_t rightMotorPwm = 0;
 
+    bool boost = false;
+
     // sensor measurements
     float batteryVoltageV = 0.0f;
     float currentMa = 0.0f;

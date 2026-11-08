@@ -18,6 +18,10 @@ constexpr int R_IN1_CH = 3;
 constexpr int R_IN2_CH = 4;
 
 
+// boost select pin
+constexpr int BOOST_SEL = 21;
+
+
 // initialize motors
 
 void initializeMotors() {
@@ -131,4 +135,14 @@ void brakeMotors(DriveWireState& state) {
 
     state.leftMotorPwm = 0;
     state.rightMotorPwm = 0;
+}
+
+void boost(DriveWireState& state, bool cmd) {
+    pinMode(BOOST_SEL, OUTPUT);
+    if (cmd) {
+        digitalWrite(BOOST_SEL, HIGH);
+    } else {
+        digitalWrite(BOOST_SEL, LOW);
+    }
+    state.boost = cmd;
 }

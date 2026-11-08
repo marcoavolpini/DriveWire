@@ -20,3 +20,5 @@ void drive(DriveWireState& state, int16_t leftPwm, int16_t rightPwm);
 void coastMotors(DriveWireState& state); 
 
 void brakeMotors(DriveWireState& state); 
+
+void boost(DriveWireState& state, bool cmd);

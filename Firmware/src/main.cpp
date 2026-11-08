@@ -146,7 +146,9 @@ if (elapsed >= 2500 && elapsed < 10000 &&
 }
 
   vTaskDelay(pdMS_TO_TICKS(10));
-
+  if (elapsed > 7000) {
+    boost(motorData, true);
+  }
 
 
 }

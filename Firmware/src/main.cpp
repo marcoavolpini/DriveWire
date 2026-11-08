@@ -158,6 +158,7 @@ void loop() {
       cmdBuffer[cmdBufferIndex] = static_cast<char>(Serial.read());
       if (cmdBuffer[cmdBufferIndex] == '\n') {
         cmdComplete = true;
+        cmdBuffer[cmdBufferIndex] = '\0';
         break;
       }
       cmdBufferIndex++;
@@ -169,15 +170,24 @@ void loop() {
   }
   int leftPWM = 0;
   int rightPWM = 0;
+
+  bool accepted = false;
   if (cmdComplete && !invalidLength) {
     if (sscanf(cmdBuffer, "M,%d,%d", &leftPWM, &rightPWM) == 2){
-
+      accepted = true;
       MotorCommand command;
       command.leftPwm = leftPWM;
       command.rightPwm = rightPWM;
 
       xQueueOverwrite(motorCommandQueue, &command);
+      
+      
+      Serial.println(accepted ? "OK": "ERR");
+      cmdComplete = false;
+      cmdBufferIndex = 0;
+      invalidLength == false;
     }
+    
   }
 
   vTaskDelay(pdMS_TO_TICKS(10));

@@ -147,19 +147,38 @@ void loop() {
     
   }
   */
+  static char cmdBuffer[13];
+  static int cmdBufferIndex = 0;
+  static bool cmdComplete = false;
+  static bool invalidLength = false;
 
   if (Serial.available()) {
 
-    char cmdBuffer[11];
-
-    for (int i = 0; i < Serial.available(); i++) {
-      cmdBuffer[i] = static_cast<char>(Serial.read());
-      if (cmdBuffer[i] == 'n') {
+    while (Serial.available()) {
+      cmdBuffer[cmdBufferIndex] = static_cast<char>(Serial.read());
+      if (cmdBuffer[cmdBufferIndex] == '\n') {
+        cmdComplete = true;
         break;
+      }
+      cmdBufferIndex++;
+      if (cmdBufferIndex > 12) {
+        invalidLength = true;
+        cmdBufferIndex %= 13;
       }
     }
   }
+  int leftPWM = 0;
+  int rightPWM = 0;
+  if (cmdComplete && !invalidLength) {
+    if (sscanf(cmdBuffer, "M,%d,%d", &leftPWM, &rightPWM) == 2){
 
+      MotorCommand command;
+      command.leftPwm = leftPWM;
+      command.rightPwm = rightPWM;
+
+      xQueueOverwrite(motorCommandQueue, &command);
+    }
+  }
 
   vTaskDelay(pdMS_TO_TICKS(10));
 

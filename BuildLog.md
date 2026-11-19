@@ -425,3 +425,9 @@ Captured a corrected 6 V motor-supply stall run with a **1.503 A peak battery-si
 
 The firmware still uses a temporary timed motor test. Next is custom PWM command input through the existing motor-command queue, followed by Wi-Fi control and the web dashboard.
 
+# November 18
+
+The ESP32-S3 joined the apartment Wi-Fi in station mode and served a [basic DriveWire dashboard](Firmware/include/dashboard.h). Verified that the page loaded in a browser and that pressing Forward drove the motors through the existing FreeRTOS motor-command queue.
+
+Added a Stop button that queues active braking and press-and-hold logic that sends Forward about every 100 ms and requests Stop on release. The motor task still coasts after 500 ms without a command. The apartment Wi-Fi made sustained testing inconsistent, so the next step is to verify hold, release, and timeout behavior with the ESP32 hosting its own Wi-Fi network.
+

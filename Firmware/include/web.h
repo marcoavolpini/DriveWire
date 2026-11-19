@@ -7,4 +7,4 @@
 
 #include <drivewire_state.h>
 
-bool setup_wifi(DriveWireState* state);
+void setup_wifi(DriveWireState* state);

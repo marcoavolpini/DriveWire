@@ -37,7 +37,7 @@ void handleNotFound() {
 
 }
 
-bool setup_wifi(DriveWireState* state) {
+void setup_wifi(DriveWireState* state) {
 
     // for the initial test, gonna use wifi station, but long term i have a handoff plan using both modes
     WiFi.mode(WIFI_STA);

@@ -9,11 +9,7 @@ const char* password = "RogersBlair";
 WebServer server(80);
 // beginning with a function to setup the WiFi communication
 // first version will connect to building wifi
-bool setup_wifi(DriveWireState* state) {
 
-    
-
-}
 
 void handleRoot() {
     server.send(200, "text/plain", "hello from esp32!");
@@ -38,5 +34,12 @@ void handleNotFound() {
     }
 
     server.send(404, "text/plain", message);
+
+}
+
+bool setup_wifi(DriveWireState* state) {
+
+    // for the initial test, gonna use wifi station, but long term i have a handoff plan using both modes
+    WiFi.mode(WIFI_STA);
 
 }

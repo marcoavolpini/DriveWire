@@ -4,6 +4,7 @@
 #include <sensors.h>
 #include <serial_interface.h>
 #include <drivewire_state.h>
+#include <web.h>
 
 // including FreeRTOS libraries
 #include <FreeRTOS.h>
@@ -12,6 +13,7 @@
 
 DriveWireState sensorData;
 DriveWireState motorData;
+DriveWireState wifiData;
 
 // initializing a queue handle for the sensor task that holds a snapshot of sensor telemetry
 QueueHandle_t sensorQueue = nullptr;
@@ -52,6 +54,22 @@ void setup(){
     for ( ; ; ) {
       vTaskDelay(pdMS_TO_TICKS(1000));
     }
+
+
+    // new wifi stuff
+
+    setup_wifi(&wifiData);
+
+    Serial.print("Connected to: ");
+    Serial.println(wifiData.ssid);
+
+    Serial.print("IP Address: ");
+    Serial.println(wifiData.IPaddress);
+
+    if (wifiData.MDNSresponded) {
+      Serial.println("MDNS responder started.");
+    }
+
   }
 
   // creating the sensor task

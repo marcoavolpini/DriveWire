@@ -24,4 +24,13 @@ struct DriveWireState {
     // safety flags
     bool obstacleDetected = false;
     bool faultActive = false;
+
+
+    // wifi stuff
+    const char* ssid = "........";
+    //const char* password = "........";
+    bool wifiConnected = false;
+    bool stationMode = true; 
+    char IPaddress;
+    bool MDNSresponded = false;
 };

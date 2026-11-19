@@ -41,5 +41,27 @@ bool setup_wifi(DriveWireState* state) {
 
     // for the initial test, gonna use wifi station, but long term i have a handoff plan using both modes
     WiFi.mode(WIFI_STA);
+    WiFi.begin(ssid, password);
 
+    // waiting for connection
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+    }
+
+    state->ssid = ssid;
+    //state->password = password;
+
+    state->IPaddress = WiFi.localIP();
+
+    if (MDNS.begin("esp32")) {
+        state->MDNSresponded = true;
+    }
+
+    // handling initial server load
+    server.on("/", handleRoot);
+
+    // if not found
+    server.onNotFound(handleNotFound);
+
+    server.begin();
 }

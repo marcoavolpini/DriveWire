@@ -65,3 +65,8 @@ void setup_wifi(DriveWireState* state) {
 
     server.begin();
 }
+
+
+void handle_web() {
+    server.handleClient();
+}

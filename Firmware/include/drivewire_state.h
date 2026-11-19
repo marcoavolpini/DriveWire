@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <string.h>
 
 struct DriveWireState {
 
@@ -31,6 +32,6 @@ struct DriveWireState {
     //const char* password = "........";
     bool wifiConnected = false;
     bool stationMode = true; 
-    char IPaddress;
+    uint32_t IPaddress = 0;
     bool MDNSresponded = false;
 };

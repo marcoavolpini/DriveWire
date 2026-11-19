@@ -8,3 +8,5 @@
 #include <drivewire_state.h>
 
 void setup_wifi(DriveWireState* state);
+
+void handle_web();

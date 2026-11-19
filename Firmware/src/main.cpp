@@ -56,20 +56,6 @@ void setup(){
     }
 
 
-    // new wifi stuff
-
-    setup_wifi(&wifiData);
-
-    Serial.print("Connected to: ");
-    Serial.println(wifiData.ssid);
-
-    Serial.print("IP Address: ");
-    Serial.println(wifiData.IPaddress);
-
-    if (wifiData.MDNSresponded) {
-      Serial.println("MDNS responder started.");
-    }
-
   }
 
   // creating the sensor task
@@ -99,14 +85,29 @@ void setup(){
     &motorData,
     1,
     nullptr
-);
+  );
 
-if (taskResult != pdPASS) {
+  if (taskResult != pdPASS) {
     Serial.println("Failed to create motor task.");
     for (;;) {
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
-}
+  }
+
+
+  // new wifi stuff
+
+  setup_wifi(&wifiData);
+
+  Serial.print("Connected to: ");
+  Serial.println(wifiData.ssid);
+
+  Serial.print("IP Address: ");
+  Serial.println(wifiData.IPaddress);
+
+  if (wifiData.MDNSresponded) {
+    Serial.println("MDNS responder started.");
+  }
 
 
   // actually initializeMotors is a void function so we can't currently check if successful
@@ -209,7 +210,8 @@ void loop() {
   vTaskDelay(pdMS_TO_TICKS(10));
 
 
-
+  // just a temporary web servicing line
+  handle_web();
 }
 
 void sensorTask(void* parameter) {

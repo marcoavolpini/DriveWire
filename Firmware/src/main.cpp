@@ -97,7 +97,7 @@ void setup(){
 
   // new wifi stuff
 
-  setup_wifi(&wifiData);
+  setup_wifi(&wifiData, motorCommandQueue);
 
   Serial.print("Connected to: ");
   Serial.println(wifiData.ssid);
@@ -248,7 +248,12 @@ void motorTask(void* parameter) {
         if (xQueueReceive(motorCommandQueue,
                           &command,
                           commandTimeout) == pdTRUE) {
-            drive(*motorState, command.leftPwm, command.rightPwm);
+            if (!command.brake) {
+              drive(*motorState, command.leftPwm, command.rightPwm);
+            }
+            else {
+              brakeMotors(*motorState);
+            }
             /*
             Serial.printf("Motor received: L=%d R=%d\n",
             command.leftPwm, command.rightPwm);

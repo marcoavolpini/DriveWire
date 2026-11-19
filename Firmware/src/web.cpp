@@ -1,7 +1,12 @@
 #include <web.h>
 
 #include <string.h>
+#include <FreeRTOS.h>
+#include <task.h>
+#include <queue.h>
+
 #include <dashboard.h>
+#include <motors.h>
 
 
 const char* ssid = "Blair WiFi";
@@ -13,14 +18,32 @@ WebServer server(80);
 // first version will connect to building wifi
 
 
+// the handle that will be passed from main
+static QueueHandle_t webMotorQueue = nullptr;
+
+
 void handleRoot() {
     server.send(200, "text/html", dashboardHtml);
 }
 
 
 void handleTestForward() {
-    Serial.begin(115200);
-    Serial.print("Forward pressed");
+    MotorCommand command;
+    command.leftPwm = 255;
+    command.rightPwm = 255;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
+void handleStop() {
+    MotorCommand command;
+    command.brake = true;
+    command.leftPwm = 0;
+    command.rightPwm = 0;
+
+    xQueueOverwrite(webMotorQueue, &command);
+
     server.send(200, "text/plain", "OK");
 }
 
@@ -46,7 +69,10 @@ void handleNotFound() {
 
 }
 
-void setup_wifi(DriveWireState* state) {
+void setup_wifi(DriveWireState* state, QueueHandle_t motorComQueue) {
+
+    // grabbing the queue handle and saving it globally
+    webMotorQueue = motorComQueue;
 
     // for the initial test, gonna use wifi station, but long term i have a handoff plan using both modes
     WiFi.mode(WIFI_STA);
@@ -74,6 +100,9 @@ void setup_wifi(DriveWireState* state) {
 
     // handling forward test
     server.on("/test-forward", HTTP_POST, handleTestForward);
+
+    // handling stop
+    server.on("/stop", HTTP_POST, handleStop);
 
     server.begin();
 }

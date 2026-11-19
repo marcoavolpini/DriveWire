@@ -7,6 +7,8 @@
 struct MotorCommand {
     int16_t leftPwm = 0;
     int16_t rightPwm = 0;
+    
+    bool brake = false;
 };
 
 

@@ -7,6 +7,6 @@
 
 #include <drivewire_state.h>
 
-void setup_wifi(DriveWireState* state);
+void setup_wifi(DriveWireState* state, QueueHandle_t motorCommandQueue);
 
 void handle_web();

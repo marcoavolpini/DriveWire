@@ -1,10 +1,12 @@
 #include <web.h>
 
 #include <string.h>
+#include <dashboard.h>
 
 
 const char* ssid = "Blair WiFi";
 const char* password = "RogersBlair";
+
 
 WebServer server(80);
 // beginning with a function to setup the WiFi communication
@@ -12,7 +14,14 @@ WebServer server(80);
 
 
 void handleRoot() {
-    server.send(200, "text/html", "<h1>DriveWire</h1><button>Forward</button>");
+    server.send(200, "text/html", dashboardHtml);
+}
+
+
+void handleTestForward() {
+    Serial.begin(115200);
+    Serial.print("Forward pressed");
+    server.send(200, "text/plain", "OK");
 }
 
 void handleNotFound() {
@@ -62,6 +71,9 @@ void setup_wifi(DriveWireState* state) {
 
     // if not found
     server.onNotFound(handleNotFound);
+
+    // handling forward test
+    server.on("/test-forward", HTTP_POST, handleTestForward);
 
     server.begin();
 }

@@ -103,7 +103,7 @@ void setup(){
   Serial.println(wifiData.ssid);
 
   Serial.print("IP Address: ");
-  Serial.println(wifiData.IPaddress);
+  Serial.println(IPAddress(wifiData.IPaddress));
 
   if (wifiData.MDNSresponded) {
     Serial.println("MDNS responder started.");

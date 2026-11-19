@@ -12,7 +12,7 @@ WebServer server(80);
 
 
 void handleRoot() {
-    server.send(200, "text/plain", "hello from esp32!");
+    server.send(200, "text/html", "<h1>DriveWire</h1><button>Forward</button>");
 }
 
 void handleNotFound() {

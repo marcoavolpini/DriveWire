@@ -26,10 +26,10 @@ void handleRoot() {
     server.send(200, "text/html", dashboardHtml);
 }
 
-
+// slightly nerfing left motor with software because not perfectly balanced irl
 void handleForward() {
     MotorCommand command;
-    command.leftPwm = 255;
+    command.leftPwm = 250;
     command.rightPwm = 255;
     xQueueOverwrite(webMotorQueue, &command);
 
@@ -39,7 +39,7 @@ void handleForward() {
 
 void handleReverse() {
     MotorCommand command;
-    command.leftPwm = -255;
+    command.leftPwm = -250;
     command.rightPwm = -255;
     xQueueOverwrite(webMotorQueue, &command);
 
@@ -66,7 +66,7 @@ void handlePivotLeft() {
 
 void handleForwardLeft() {
     MotorCommand command;
-    command.leftPwm = 190;
+    command.leftPwm = 180;
     command.rightPwm = 255;
     xQueueOverwrite(webMotorQueue, &command);
 
@@ -84,7 +84,7 @@ void handleForwardRight() {
 
 void handleReverseLeft() {
     MotorCommand command;
-    command.leftPwm = -190;
+    command.leftPwm = -180;
     command.rightPwm = -255;
     xQueueOverwrite(webMotorQueue, &command);
 

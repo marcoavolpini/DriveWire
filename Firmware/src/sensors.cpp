@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <math.h>
 
 #include <Wire.h>
 #include <Adafruit_INA219.h>
@@ -13,6 +14,9 @@ constexpr float SHUNT_RESISTANCE_OHMS = 0.020f;
 
 constexpr int SDA_PIN = 7;
 constexpr int SCL_PIN = 15;
+
+constexpr int L_MOTOR_TEMP_PIN = 1;
+constexpr int R_MOTOR_TEMP_PIN = 2;
 
 bool initializeSensors(DriveWireState& state) {
 
@@ -152,6 +156,40 @@ bool refreshDistanceTelemetry(DriveWireState& state) {
 
 }
 
+bool refreshMotorTempTelemetry(DriveWireState& state) {
+
+    constexpr float betaK = 3450.0f;
+    constexpr float ntcOhmsAt25C = 10000.0f;
+
+
+
+    uint32_t rawVoltageLeft = analogReadMilliVolts(L_MOTOR_TEMP_PIN)/1000;
+    uint32_t rawVoltageRight = analogReadMilliVolts(R_MOTOR_TEMP_PIN)/1000;
+
+    if (rawVoltageLeft <= 0.0 || rawVoltageLeft >= 3.3 || rawVoltageRight <= 0.0 ||
+        rawVoltageRight >= 3.3) {
+        
+        state.leftMotorTemp = NAN;
+        state.rightMotorTemp = NAN;
+
+        return false;
+    }
+
+
+    float resLeft = (rawVoltageLeft/(3.3-rawVoltageLeft))*10000;
+    float resRight = (rawVoltageRight/(3.3-rawVoltageRight))*10000;
+
+    const float inverseTempKLeft = 1.0f / 298.15f + logf(resLeft / ntcOhmsAt25C) / betaK;
+    const float tempLeft =  1.0f / inverseTempKLeft - 273.15f;
+
+    const float inverseTempKRight = 1.0f / 298.15f + logf(resRight / ntcOhmsAt25C) / betaK;
+    const float tempRight =  1.0f / inverseTempKLeft - 273.15f;
+
+    state.leftMotorTemp = tempLeft;
+    state.rightMotorTemp = tempRight;
+
+}
+
 
 // convenience function - refreshes everything at once
 
@@ -160,8 +198,9 @@ bool refreshAllSensors(DriveWireState& state){
     // note that currently one could succeed, and then one telemetry point is updated and one isnt
     bool electricalState = refreshElectricalTelemetry(state);
     bool tofState = refreshDistanceTelemetry(state);
+    bool tempState = refreshMotorTempTelemetry(state);
 
-    return (electricalState && tofState);
+    return (electricalState && tofState && tempState);
 
 }
 

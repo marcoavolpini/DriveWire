@@ -1,72 +1,138 @@
 #pragma once
 
 constexpr char dashboardHtml[] = R"HTML(
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DriveWire</title>
 
-<h1>DriveWire</h1>
-
-<button id="forward" type="button" style="touch-action: none">Forward</button>
-<button id="stop" type="button">Stop</button>
-
-<script>
-  const forward = document.getElementById('forward');
-  let repeatTimer = null;
-  let pendingForward = null;
-  let stopping = false;
-
-  async function sendForward() {
-    if (pendingForward) return;
-
-    pendingForward = fetch('/test-forward', { method: 'POST' });
-    try {
-      await pendingForward;
-    } catch (error) {
-      console.error(error);
-    } finally {
-      pendingForward = null;
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
     }
-  }
 
-  async function stopDriving() {
-    if (stopping) return;
-    stopping = true;
-    clearInterval(repeatTimer);
-    repeatTimer = null;
+    main {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 42rem;
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0 auto;
+      padding: 0.75rem;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 0.75rem;
+    }
 
-    try {
-      if (pendingForward) {
-        await pendingForward.catch(() => {});
+    h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .drive-pad {
+      display: grid;
+      grid-template-areas:
+        "forward-left forward forward-right"
+        "left stop right"
+        "reverse-left reverse reverse-right";
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(3.5rem, 1fr));
+      gap: 0.5rem;
+    }
+
+    .drive-pad button {
+      padding: 0.5rem;
+      font: inherit;
+      font-size: clamp(1rem, 4.5vw, 1.25rem);
+      font-weight: 600;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>DriveWire</h1>
+
+    <div class="drive-pad">
+      <button type="button" style="grid-area: forward-left" data-route="/forward-left">Forward Left</button>
+      <button type="button" style="grid-area: forward" data-route="/forward">Forward</button>
+      <button type="button" style="grid-area: forward-right" data-route="/forward-right">Forward Right</button>
+      <button type="button" style="grid-area: left" data-route="/pivot-left">Pivot Left</button>
+      <button type="button" style="grid-area: stop" id="stop">Stop</button>
+      <button type="button" style="grid-area: right" data-route="/pivot-right">Pivot Right</button>
+      <button type="button" style="grid-area: reverse-left" data-route="/reverse-left">Reverse Left</button>
+      <button type="button" style="grid-area: reverse" data-route="/reverse">Reverse</button>
+      <button type="button" style="grid-area: reverse-right" data-route="/reverse-right">Reverse Right</button>
+    </div>
+  </main>
+
+  <script>
+    let activePointer = null;
+    let repeatTimer = null;
+    let pendingDrive = null;
+    let stopping = false;
+
+    function sendDrive(route) {
+      if (pendingDrive) return;
+
+      pendingDrive = fetch(route, { method: 'POST' })
+        .catch(error => console.error(error))
+        .finally(() => {
+          pendingDrive = null;
+        });
+    }
+
+    async function stopDriving() {
+      if (stopping) return;
+
+      stopping = true;
+      activePointer = null;
+      clearInterval(repeatTimer);
+
+      try {
+        await pendingDrive;
+        await fetch('/stop', { method: 'POST' });
+      } catch (error) {
+        console.error(error);
+      } finally {
+        stopping = false;
       }
-      await fetch('/stop', { method: 'POST' });
-    } catch (error) {
-      console.error(error);
-    } finally {
-      stopping = false;
     }
-  }
 
-  forward.addEventListener('pointerdown', (event) => {
-    if (repeatTimer !== null || stopping || event.button !== 0) return;
+    function releaseDirection(event) {
+      if (event.pointerId === activePointer) stopDriving();
+    }
 
-    forward.setPointerCapture(event.pointerId);
-    sendForward();
-    repeatTimer = setInterval(sendForward, 100);
-  });
+    for (const button of document.querySelectorAll('[data-route]')) {
+      const route = button.dataset.route;
 
-  forward.addEventListener('pointerup', stopDriving);
-  forward.addEventListener('pointercancel', stopDriving);
-  document.getElementById('stop').addEventListener('click', stopDriving);
+      button.addEventListener('pointerdown', event => {
+        if (activePointer !== null || stopping || event.button !== 0) return;
 
-  window.addEventListener('blur', () => {
-    if (repeatTimer !== null) stopDriving();
-  });
-</script>
+        button.setPointerCapture(event.pointerId);
+        activePointer = event.pointerId;
+        sendDrive(route);
+        repeatTimer = setInterval(() => sendDrive(route), 100);
+      });
 
+      button.addEventListener('pointerup', releaseDirection);
+      button.addEventListener('pointercancel', releaseDirection);
+      button.addEventListener('lostpointercapture', releaseDirection);
+    }
 
+    document.getElementById('stop').addEventListener('click', stopDriving);
 
-
-
-
-
-
-
+    window.addEventListener('blur', () => {
+      if (activePointer !== null) stopDriving();
+    });
+  </script>
+</body>
+</html>
 )HTML";

@@ -26,6 +26,10 @@ struct DriveWireState {
     bool obstacleDetected = false;
     bool faultActive = false;
 
+    // fault critical
+    float leftMotorTemp = NAN;
+    float rightMotorTemp = NAN;
+
 
     // wifi stuff
     const char* ssid = "........";

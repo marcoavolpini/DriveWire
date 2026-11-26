@@ -27,7 +27,7 @@ void handleRoot() {
 }
 
 
-void handleTestForward() {
+void handleForward() {
     MotorCommand command;
     command.leftPwm = 255;
     command.rightPwm = 255;
@@ -35,6 +35,71 @@ void handleTestForward() {
 
     server.send(200, "text/plain", "OK");
 }
+
+
+void handleReverse() {
+    MotorCommand command;
+    command.leftPwm = -255;
+    command.rightPwm = -255;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
+void handlePivotRight() {
+    MotorCommand command;
+    command.leftPwm = 255;
+    command.rightPwm = -255;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
+void handlePivotLeft() {
+    MotorCommand command;
+    command.leftPwm = -255;
+    command.rightPwm = 255;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
+void handleForwardLeft() {
+    MotorCommand command;
+    command.leftPwm = 190;
+    command.rightPwm = 255;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
+void handleForwardRight() {
+    MotorCommand command;
+    command.leftPwm = 255;
+    command.rightPwm = 190;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
+void handleReverseLeft() {
+    MotorCommand command;
+    command.leftPwm = -190;
+    command.rightPwm = -255;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
+void handleReverseRight() {
+    MotorCommand command;
+    command.leftPwm = -255;
+    command.rightPwm = -190;
+    xQueueOverwrite(webMotorQueue, &command);
+
+    server.send(200, "text/plain", "OK");
+}
+
 
 void handleStop() {
     MotorCommand command;
@@ -74,6 +139,8 @@ void setup_wifi(DriveWireState* state, QueueHandle_t motorComQueue) {
     // grabbing the queue handle and saving it globally
     webMotorQueue = motorComQueue;
 
+    // code for the building wifi mode
+    /*
     // for the initial test, gonna use wifi station, but long term i have a handoff plan using both modes
     WiFi.mode(WIFI_STA);
     WiFi.begin(ssid, password);
@@ -82,11 +149,25 @@ void setup_wifi(DriveWireState* state, QueueHandle_t motorComQueue) {
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
     }
+    */
 
-    state->ssid = ssid;
+    // code for hosting it's own network
+    WiFi.mode(WIFI_AP);
+
+    if (!WiFi.softAP("DriveWire", "GR86Speed")) {
+        Serial.println("Could not start WiFi");
+    }
+
+    state->ssid = "DriveWire";
+    state->stationMode = false;
+    state->IPaddress = WiFi.softAPIP();
+
+
+
+    //state->ssid = ssid;
     //state->password = password;
 
-    state->IPaddress = WiFi.localIP();
+    //state->IPaddress = WiFi.localIP();
 
     if (MDNS.begin("esp32")) {
         state->MDNSresponded = true;
@@ -98,11 +179,22 @@ void setup_wifi(DriveWireState* state, QueueHandle_t motorComQueue) {
     // if not found
     server.onNotFound(handleNotFound);
 
-    // handling forward test
-    server.on("/test-forward", HTTP_POST, handleTestForward);
+    // handling forward
+    server.on("/forward", HTTP_POST, handleForward);
 
     // handling stop
     server.on("/stop", HTTP_POST, handleStop);
+
+    // handling reverse
+    server.on("/reverse", HTTP_POST, handleReverse);
+
+    server.on("/pivot-left", HTTP_POST, handlePivotLeft);
+    server.on("/pivot-right", HTTP_POST, handlePivotRight);
+
+    server.on("/forward-left", HTTP_POST, handleForwardLeft);
+    server.on("/forward-right", HTTP_POST, handleForwardRight);
+    server.on("/reverse-left", HTTP_POST, handleReverseLeft);
+    server.on("/reverse-right", HTTP_POST, handleReverseRight);
 
     server.begin();
 }

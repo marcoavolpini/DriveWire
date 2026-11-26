@@ -14,6 +14,7 @@
 DriveWireState sensorData;
 DriveWireState motorData;
 DriveWireState wifiData;
+DriveWireState faultState;
 
 // initializing a queue handle for the sensor task that holds a snapshot of sensor telemetry
 QueueHandle_t sensorQueue = nullptr;
@@ -47,6 +48,7 @@ void setup(){
   // same with the motor queue
   motorCommandQueue = xQueueCreate(1, sizeof(MotorCommand));
 
+
   if (sensorQueue == nullptr || motorCommandQueue == nullptr) {
     Serial.println("Failed to create sensor queue or motor queue");
 
@@ -67,6 +69,7 @@ void setup(){
     1, 
     nullptr
   );
+
 
   // checking for successful sensor task creation
   if (taskResult != pdPASS) {
@@ -93,6 +96,28 @@ void setup(){
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
   }
+
+
+  // creating the fault task
+  BaseType_t faultTaskResult = xTaskCreate(
+    faultTask, 
+    "faultTask", 
+    4096, 
+    &faultState, 
+    1, 
+    nullptr
+  );
+
+
+  // checking for successful fault task creation
+  if (faultTaskResult != pdPASS) {
+    Serial.println("Failed to create fault task.");
+
+    Serial.println("The program will not run");
+    for ( ; ; ) {
+      vTaskDelay(pdMS_TO_TICKS(1000));
+    }
+  }  
 
 
   // new wifi stuff
@@ -262,4 +287,19 @@ void motorTask(void* parameter) {
             coastMotors(*motorState);
         }
     }
+}
+
+
+void faultTask(void* parameter) {
+
+  DriveWireState* faultState = static_cast<DriveWireState*>(parameter);
+
+  for ( ; ; ) {
+
+    
+
+
+  }
+
+
 }

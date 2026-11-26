@@ -9,6 +9,7 @@ struct MotorCommand {
     int16_t rightPwm = 0;
     
     bool brake = false;
+    bool boost = false;
 };
 
 
@@ -23,4 +24,4 @@ void coastMotors(DriveWireState& state);
 
 void brakeMotors(DriveWireState& state); 
 
-void boost(DriveWireState& state, bool cmd);
+void boost(DriveWireState& state, DriveWireState& faultState, bool cmd);

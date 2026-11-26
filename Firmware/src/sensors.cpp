@@ -166,6 +166,11 @@ bool refreshMotorTempTelemetry(DriveWireState& state) {
     float rawVoltageLeft = analogReadMilliVolts(L_MOTOR_TEMP_PIN)/1000.0f;
     float rawVoltageRight = analogReadMilliVolts(R_MOTOR_TEMP_PIN)/1000.0f;
 
+    /*
+    Serial.printf("Thermistors: L=%.3f V, R=%.3f V\n",
+              rawVoltageLeft, rawVoltageRight);
+    */
+
     if (rawVoltageLeft <= 0.0 || rawVoltageLeft >= 3.3 || rawVoltageRight <= 0.0 ||
         rawVoltageRight >= 3.3) {
         

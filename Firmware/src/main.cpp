@@ -279,6 +279,10 @@ void motorTask(void* parameter) {
         if (xQueueReceive(motorCommandQueue,
                           &command,
                           commandTimeout) == pdTRUE) {
+            
+            if (command.boost && !faultState.faultActive) {  // do i need a volatile here? 
+              boost(motorData, faultState, true);
+            }
             if (!command.brake) {
               drive(*motorState, command.leftPwm, command.rightPwm);
             }
@@ -302,8 +306,13 @@ void faultTask(void* parameter) {
 
   for ( ; ; ) {
 
-    
-
+    // temperature check
+    if (sensorData.leftMotorTemp > 35 || sensorData.rightMotorTemp > 35) {
+      faultState->faultActive = true;
+      while(1){
+        delay(100000000000);
+      }
+    }
 
   }
 

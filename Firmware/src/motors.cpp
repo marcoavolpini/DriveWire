@@ -140,11 +140,12 @@ void brakeMotors(DriveWireState& state) {
     state.rightMotorPwm = 0;
 }
 
-void boost(DriveWireState& state, bool cmd) {
+void boost(DriveWireState& state, DriveWireState& faultState, bool cmd) {
     if (cmd) {
         digitalWrite(BOOST_SEL, HIGH);
     } else {
         digitalWrite(BOOST_SEL, LOW);
     }
     state.boost = cmd;
+    faultState.boost = cmd;
 }

@@ -25,6 +25,8 @@ QueueHandle_t motorCommandQueue = nullptr;
 void sensorTask(void* parameter);
 // same for motor task
 void motorTask(void* parameter);
+// same for fault task
+void faultTask(void* parameter);
 
 
 void setup(){

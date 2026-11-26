@@ -200,6 +200,9 @@ void setup_wifi(DriveWireState* state, QueueHandle_t motorComQueue, QueueHandle_
     // handling stop
     server.on("/stop", HTTP_POST, handleStop);
 
+    // handle boost
+    server.on("/boost", HTTP_POST, handleBoost);
+
     // handling reverse
     server.on("/reverse", HTTP_POST, handleReverse);
 

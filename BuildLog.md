@@ -431,3 +431,13 @@ The ESP32-S3 joined the apartment Wi-Fi in station mode and served a [basic Driv
 
 Added a Stop button that queues active braking and press-and-hold logic that sends Forward about every 100 ms and requests Stop on release. The motor task still coasts after 500 ms without a command. The apartment Wi-Fi made sustained testing inconsistent, so the next step is to verify hold, release, and timeout behavior with the ESP32 hosting its own Wi-Fi network.
 
+# November 25
+
+Started out just trying to get off the building Wi-Fi and got through way more than expected. The ESP32 now hosts its own DriveWire network, and the phone controls felt almost instant. The [dashboard](Firmware/include/dashboard.h) fills the phone screen with eight hold-to-drive buttons for forward, reverse, pivots, and diagonal turns, plus Stop in the middle. Tamed most of Safari's long-press highlighting too.
+
+Got both motor thermistors reading in the serial telemetry on GPIO1 and GPIO2. The right channel was stuck at 0 V until I moved the leads. Snapping the pre-crimped wires into the JST-PH housings gave both sensors a proper plug, and both were reading around 22 °C on the bench.
+
+Got the first Boost toggle talking to the firmware. It changes color when the ESP32 accepts the request, and the motor task reads it from a separate queue. Added basic temperature checks and a boost shutoff when drive commands time out. The temperature trip and motor supply switching still need bench testing.
+
+Tracked down two bugs along the way. The fault task was looping so fast that the watchdog reset the ESP32 even with boost off. A 100 ms delay fixed the busy loop. The Boost button also needed its HTTP route registered before the board could accept the request.
+

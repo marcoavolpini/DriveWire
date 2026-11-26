@@ -163,8 +163,8 @@ bool refreshMotorTempTelemetry(DriveWireState& state) {
 
 
 
-    uint32_t rawVoltageLeft = analogReadMilliVolts(L_MOTOR_TEMP_PIN)/1000;
-    uint32_t rawVoltageRight = analogReadMilliVolts(R_MOTOR_TEMP_PIN)/1000;
+    float rawVoltageLeft = analogReadMilliVolts(L_MOTOR_TEMP_PIN)/1000.0f;
+    float rawVoltageRight = analogReadMilliVolts(R_MOTOR_TEMP_PIN)/1000.0f;
 
     if (rawVoltageLeft <= 0.0 || rawVoltageLeft >= 3.3 || rawVoltageRight <= 0.0 ||
         rawVoltageRight >= 3.3) {
@@ -183,11 +183,12 @@ bool refreshMotorTempTelemetry(DriveWireState& state) {
     const float tempLeft =  1.0f / inverseTempKLeft - 273.15f;
 
     const float inverseTempKRight = 1.0f / 298.15f + logf(resRight / ntcOhmsAt25C) / betaK;
-    const float tempRight =  1.0f / inverseTempKLeft - 273.15f;
+    const float tempRight =  1.0f / inverseTempKRight - 273.15f;
 
     state.leftMotorTemp = tempLeft;
     state.rightMotorTemp = tempRight;
 
+    return true;
 }
 
 

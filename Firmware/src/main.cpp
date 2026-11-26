@@ -152,7 +152,11 @@ void loop() {
     Serial.print(",");
     Serial.print(receivedState.currentMa);
     Serial.print(",");
-    Serial.println(receivedState.distanceMm);
+    Serial.print(receivedState.distanceMm);
+    Serial.print(",");
+    Serial.print(receivedState.leftMotorTemp);
+    Serial.print(",");
+    Serial.println(receivedState.rightMotorTemp);
     
     
     

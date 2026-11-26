@@ -22,6 +22,7 @@ struct DriveWireState {
     // hardware status
     bool ina219Online = false;
     bool tofOnline = false;
+    bool thermOnline = false;
 
     // safety flags
     bool obstacleDetected = false;

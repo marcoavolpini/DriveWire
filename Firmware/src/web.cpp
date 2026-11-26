@@ -20,6 +20,7 @@ WebServer server(80);
 
 // the handle that will be passed from main
 static QueueHandle_t webMotorQueue = nullptr;
+static QueueHandle_t webBoostQueue = nullptr;
 
 
 void handleRoot() {
@@ -112,6 +113,19 @@ void handleStop() {
     server.send(200, "text/plain", "OK");
 }
 
+
+void handleBoost() {
+    const String enabled = server.arg("enabled");
+    if (enabled != "0" && enabled != "1") {
+        server.send(400, "text/plain", "Expected enabled=0 or enabled=1");
+        return;
+    }
+
+    const bool requested = enabled == "1";
+    xQueueOverwrite(webBoostQueue, &requested);
+    server.send(200, "text/plain", "OK");
+}
+
 void handleNotFound() {
     String message = "File not found\n\n";
 
@@ -134,10 +148,11 @@ void handleNotFound() {
 
 }
 
-void setup_wifi(DriveWireState* state, QueueHandle_t motorComQueue) {
+void setup_wifi(DriveWireState* state, QueueHandle_t motorComQueue, QueueHandle_t boostQueue) {
 
     // grabbing the queue handle and saving it globally
     webMotorQueue = motorComQueue;
+    webBoostQueue = boostQueue;
 
     // code for the building wifi mode
     /*

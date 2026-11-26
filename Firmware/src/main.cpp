@@ -21,6 +21,8 @@ QueueHandle_t sensorQueue = nullptr;
 // same for motor task
 QueueHandle_t motorCommandQueue = nullptr;
 
+QueueHandle_t boostQueue = nullptr;
+
 // declaring sensorTask
 void sensorTask(void* parameter);
 // same for motor task
@@ -49,10 +51,12 @@ void setup(){
   sensorQueue = xQueueCreate(1, sizeof(DriveWireState));
   // same with the motor queue
   motorCommandQueue = xQueueCreate(1, sizeof(MotorCommand));
+  // and a new boost queue
+  boostQueue = xQueueCreate(1, sizeof(bool));
 
 
-  if (sensorQueue == nullptr || motorCommandQueue == nullptr) {
-    Serial.println("Failed to create sensor queue or motor queue");
+  if (sensorQueue == nullptr || motorCommandQueue == nullptr || boostQueue == nullptr) {
+    Serial.println("Failed to create sensor queue, motor queue or boost queue");
 
     Serial.println("The program will not run");
     for ( ; ; ) {
@@ -275,12 +279,19 @@ void motorTask(void* parameter) {
     MotorCommand command;
     const TickType_t commandTimeout = pdMS_TO_TICKS(500);
 
+    bool boostRequest;
+    
+
     for (;;) {
+
+      xQueuePeek(boostQueue, &boostRequest, 1);
+      command.boost = boostRequest;
+
         if (xQueueReceive(motorCommandQueue,
                           &command,
                           commandTimeout) == pdTRUE) {
             
-            if (command.boost && !faultState.faultActive) {  // do i need a volatile here? 
+            if (command.boost && !faultState.faultActive && sensorData.thermOnline) {  // do i need a volatile here? 
               boost(motorData, faultState, true);
             }
             if (!command.brake && !faultState.faultActive) {
@@ -289,7 +300,7 @@ void motorTask(void* parameter) {
             else {
               brakeMotors(*motorState);
             }
-            if (faultState.faultActive) {
+            if (faultState.faultActive || !sensorData.thermOnline) {
               boost(motorData, faultState, false);
             }
             /*

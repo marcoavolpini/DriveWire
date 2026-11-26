@@ -177,6 +177,8 @@ bool refreshMotorTempTelemetry(DriveWireState& state) {
         state.leftMotorTemp = NAN;
         state.rightMotorTemp = NAN;
 
+        state.thermOnline = false;
+
         return false;
     }
 
@@ -192,6 +194,7 @@ bool refreshMotorTempTelemetry(DriveWireState& state) {
 
     state.leftMotorTemp = tempLeft;
     state.rightMotorTemp = tempRight;
+    state.thermOnline = true;
 
     return true;
 }

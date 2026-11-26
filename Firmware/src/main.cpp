@@ -283,11 +283,14 @@ void motorTask(void* parameter) {
             if (command.boost && !faultState.faultActive) {  // do i need a volatile here? 
               boost(motorData, faultState, true);
             }
-            if (!command.brake) {
+            if (!command.brake && !faultState.faultActive) {
               drive(*motorState, command.leftPwm, command.rightPwm);
             }
             else {
               brakeMotors(*motorState);
+            }
+            if (faultState.faultActive) {
+              boost(motorData, faultState, false);
             }
             /*
             Serial.printf("Motor received: L=%d R=%d\n",
@@ -295,6 +298,7 @@ void motorTask(void* parameter) {
             */
         } else {
             coastMotors(*motorState);
+            boost(motorData, faultState, false);
         }
     }
 }
@@ -310,7 +314,7 @@ void faultTask(void* parameter) {
     if (sensorData.leftMotorTemp > 35 || sensorData.rightMotorTemp > 35) {
       faultState->faultActive = true;
       while(1){
-        delay(100000000000);
+        delay(100000);
       }
     }
 

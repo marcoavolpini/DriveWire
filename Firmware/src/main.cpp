@@ -128,7 +128,7 @@ void setup(){
 
   // new wifi stuff
 
-  setup_wifi(&wifiData, motorCommandQueue);
+  setup_wifi(&wifiData, motorCommandQueue, boostQueue);
 
   Serial.print("Connected to: ");
   Serial.println(wifiData.ssid);
@@ -284,12 +284,12 @@ void motorTask(void* parameter) {
 
     for (;;) {
 
-      xQueuePeek(boostQueue, &boostRequest, 1);
-      command.boost = boostRequest;
-
         if (xQueueReceive(motorCommandQueue,
                           &command,
                           commandTimeout) == pdTRUE) {
+            
+            command.boost = false;  // default if boost queue is empty
+            xQueuePeek(boostQueue, &command.boost, 0);
             
             if (command.boost && !faultState.faultActive && sensorData.thermOnline) {  // do i need a volatile here? 
               boost(motorData, faultState, true);
@@ -300,7 +300,7 @@ void motorTask(void* parameter) {
             else {
               brakeMotors(*motorState);
             }
-            if (faultState.faultActive || !sensorData.thermOnline) {
+            if (faultState.faultActive || !sensorData.thermOnline || !command.boost) {
               boost(motorData, faultState, false);
             }
             /*

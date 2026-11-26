@@ -9,6 +9,13 @@ constexpr char dashboardHtml[] = R"HTML(
   <title>DriveWire</title>
 
   <style>
+    * {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
     body {
       margin: 0;
       font-family: system-ui, sans-serif;
@@ -23,13 +30,30 @@ constexpr char dashboardHtml[] = R"HTML(
       margin: 0 auto;
       padding: 0.75rem;
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto auto 1fr;
       gap: 0.75rem;
     }
 
     h1 {
       margin: 0;
       font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    button {
+      padding: 0.5rem;
+      font: inherit;
+      font-size: clamp(1rem, 4.5vw, 1.25rem);
+      font-weight: 600;
+    }
+
+    #boost {
+      min-height: 3rem;
+      touch-action: manipulation;
+    }
+
+    #boost[aria-pressed="true"] {
+      background: #f59e0b;
+      color: #171717;
     }
 
     .drive-pad {
@@ -44,14 +68,7 @@ constexpr char dashboardHtml[] = R"HTML(
     }
 
     .drive-pad button {
-      padding: 0.5rem;
-      font: inherit;
-      font-size: clamp(1rem, 4.5vw, 1.25rem);
-      font-weight: 600;
       touch-action: none;
-      -webkit-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
     }
   </style>
 </head>
@@ -59,6 +76,7 @@ constexpr char dashboardHtml[] = R"HTML(
 <body>
   <main>
     <h1>DriveWire</h1>
+    <button id="boost" type="button" aria-pressed="false">Boost off</button>
 
     <div class="drive-pad">
       <button type="button" style="grid-area: forward-left" data-route="/forward-left">Forward Left</button>
@@ -131,6 +149,41 @@ constexpr char dashboardHtml[] = R"HTML(
 
     window.addEventListener('blur', () => {
       if (activePointer !== null) stopDriving();
+    });
+
+    const boostButton = document.getElementById('boost');
+
+    async function toggleBoost() {
+      if (boostButton.disabled) return;
+
+      const enabled = boostButton.getAttribute('aria-pressed') !== 'true';
+      boostButton.disabled = true;
+
+      try {
+        const response = await fetch(`/boost?enabled=${enabled ? 1 : 0}`, {
+          method: 'POST'
+        });
+
+        if (!response.ok) {
+          throw new Error(`Boost request failed (${response.status})`);
+        }
+
+        boostButton.setAttribute('aria-pressed', String(enabled));
+        boostButton.textContent = enabled ? 'Boost armed' : 'Boost off';
+      } catch (error) {
+        boostButton.textContent = 'Boost request failed';
+        console.error(error);
+      } finally {
+        boostButton.disabled = false;
+      }
+    }
+
+    boostButton.addEventListener('pointerup', event => {
+      if (event.button === 0) toggleBoost();
+    });
+
+    boostButton.addEventListener('click', event => {
+      if (event.detail === 0) toggleBoost();
     });
   </script>
 </body>
